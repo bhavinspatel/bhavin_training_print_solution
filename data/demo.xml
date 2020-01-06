@@ -1,0 +1,298 @@
+<odoo>
+	<data>
+				<!-- User Demo Data -->
+        <record id="user0" model="user.user">
+            <field name="name">Bhavin Patel</field>
+            <field name="address">At Dharampuri</field>
+            <field name="city">Vansda</field>
+            <field name="district">Navsari</field>
+            <field name="pincode">396590</field>
+            <field name="mobile">7575051070</field>
+            <field name="email">bsp@gmail.com</field>
+        </record>
+
+        <record id="user1" model="user.user">
+            <field name="name">Bhaumik Pittaliya</field>
+            <field name="address">30, Pittalia Society, Vigay nagar</field>
+            <field name="city">Ahmedabad</field>
+            <field name="district">Ahmedabad</field>
+            <field name="pincode">380012</field>
+            <field name="mobile">9877414596</field>
+            <field name="email">bhaumik@gmail.com</field>
+        </record>
+
+        <record id="user2" model="user.user">
+            <field name="name">Vivek Tiwari</field>
+            <field name="address">52, Tiwari Banglose, Udhana</field>
+            <field name="city">Surat</field>
+            <field name="district">Surat</field>
+            <field name="pincode">351852</field>
+            <field name="mobile">8524561589</field>
+            <field name="email">vivek@gmail.com</field>
+        </record>
+
+				<!-- Provider Demo Data -->
+
+        <record id="provider0" model="provider.provider">
+            <field name="owner_name">Jigar Sheth</field>
+            <field name="name">Sheth Printers</field>
+            <field name="gst_number">21ABCDE1234F2Z</field>
+            <field name="address">At Mahuwa</field>
+            <field name="city">Mahuwa</field>
+            <field name="district">Bhavnagar</field>
+            <field name="pincode">352456</field>
+            <field name="mobile">7563965218</field>
+            <field name="email">shethprint@gmail.com</field>
+            <field name="open_time">09:00 AM</field>
+            <field name="closed_time">08:00 PM</field>
+        </record>
+
+        <record id="provider1" model="provider.provider">
+            <field name="owner_name">Sushil Gobhaliya</field>
+            <field name="name">Gobhaliya Printers</field>
+            <field name="gst_number">22ABCDE1234F2Z</field>
+            <field name="address">At Dharampur</field>
+            <field name="city">Dharampur</field>
+            <field name="district">Valsad</field>
+            <field name="pincode">396485</field>
+            <field name="mobile">8529513245</field>
+            <field name="email">gprint@gmail.com</field>
+            <field name="open_time">10:00 AM</field>
+            <field name="closed_time">06:00 PM</field>
+        </record>
+
+        <record id="provider2" model="provider.provider">
+            <field name="owner_name">Abhijit Gamit</field>
+            <field name="name">Gamit Printers</field>
+            <field name="gst_number">23ABCDE1234F2Z</field>
+            <field name="address">At Gandhinagar</field>
+            <field name="city">Songhdh</field>
+            <field name="district">Tapi</field>
+            <field name="pincode">351852</field>
+            <field name="mobile">9685374196</field>
+            <field name="email">abhiprinter@gmail.com</field>
+            <field name="open_time">10:00 AM</field>
+            <field name="closed_time">07:00 PM</field>
+        </record>
+
+				<!-- Service Demo Data -->
+
+        <record id="service0" model="service.service">
+            <field name="provider_id">1</field>
+            <field name="page_type">A0 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">60</field>
+        </record>
+
+        <record id="service1" model="service.service">
+            <field name="provider_id">1</field>
+            <field name="page_type">A1 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">45</field>
+        </record>
+
+        <record id="service2" model="service.service">
+            <field name="provider_id">1</field>
+            <field name="page_type">A2 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">30</field>
+        </record>
+
+        <record id="service3" model="service.service">
+            <field name="provider_id">1</field>
+            <field name="page_type">A3 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">10</field>
+        </record>
+
+        <record id="service4" model="service.service">
+            <field name="provider_id">1</field>
+            <field name="page_type">A4 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">2</field>
+        </record>
+
+        <record id="service5" model="service.service">
+            <field name="provider_id">1</field>
+            <field name="page_type">A5 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">1</field>
+        </record>
+
+        <record id="service6" model="service.service">
+            <field name="provider_id">1</field>
+            <field name="page_type">A6 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">1</field>
+        </record>
+
+        <record id="service7" model="service.service">
+            <field name="provider_id">1</field>
+            <field name="page_type">Flex Benner</field>
+            <field name="printing_type">Color</field>
+            <field name="description">Per Square Feet</field>
+            <field name="price">15</field>
+        </record>
+
+        <record id="service8" model="service.service">
+            <field name="provider_id">1</field>
+            <field name="page_type">Visiting Card</field>
+            <field name="printing_type">Color</field>
+            <field name="description">One Side</field>
+            <field name="price">2</field>
+        </record>
+
+        <record id="service10" model="service.service">
+            <field name="provider_id">2</field>
+            <field name="page_type">A0 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">60</field>
+        </record>
+
+        <record id="service11" model="service.service">
+            <field name="provider_id">2</field>
+            <field name="page_type">A1 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">45</field>
+        </record>
+
+        <record id="service12" model="service.service">
+            <field name="provider_id">2</field>
+            <field name="page_type">A2 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">30</field>
+        </record>
+
+        <record id="service13" model="service.service">
+            <field name="provider_id">2</field>
+            <field name="page_type">A3 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">10</field>
+        </record>
+
+        <record id="service14" model="service.service">
+            <field name="provider_id">2</field>
+            <field name="page_type">A4 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">2</field>
+        </record>
+
+        <record id="service15" model="service.service">
+            <field name="provider_id">2</field>
+            <field name="page_type">A5 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">1</field>
+        </record>
+
+        <record id="service16" model="service.service">
+            <field name="provider_id">2</field>
+            <field name="page_type">A6 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">1</field>
+        </record>
+
+        <record id="service17" model="service.service">
+            <field name="provider_id">2</field>
+            <field name="page_type">Flex Benner</field>
+            <field name="printing_type">Color</field>
+            <field name="description">Per Square Feet</field>
+            <field name="price">12</field>
+        </record>
+
+        <record id="service18" model="service.service">
+            <field name="provider_id">2</field>
+            <field name="page_type">Visiting Card</field>
+            <field name="printing_type">Color</field>
+            <field name="description">One Side</field>
+            <field name="price">2</field>
+        </record>
+
+        <record id="service20" model="service.service">
+            <field name="provider_id">3</field>
+            <field name="page_type">A0 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">60</field>
+        </record>
+
+        <record id="service21" model="service.service">
+            <field name="provider_id">3</field>
+            <field name="page_type">A1 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">45</field>
+        </record>
+
+        <record id="service22" model="service.service">
+            <field name="provider_id">3</field>
+            <field name="page_type">A2 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">30</field>
+        </record>
+
+        <record id="service23" model="service.service">
+            <field name="provider_id">3</field>
+            <field name="page_type">A3 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">10</field>
+        </record>
+
+        <record id="service24" model="service.service">
+            <field name="provider_id">3</field>
+            <field name="page_type">A4 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">2</field>
+        </record>
+
+        <record id="service25" model="service.service">
+            <field name="provider_id">3</field>
+            <field name="page_type">A5 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">1</field>
+        </record>
+
+        <record id="service26" model="service.service">
+            <field name="provider_id">3</field>
+            <field name="page_type">A6 Page</field>
+            <field name="printing_type">Black-White</field>
+            <field name="description">One Side</field>
+            <field name="price">1</field>
+        </record>
+
+        <record id="service27" model="service.service">
+            <field name="provider_id">3</field>
+            <field name="page_type">Flex Benner</field>
+            <field name="printing_type">Color</field>
+            <field name="description">Per Square Feet</field>
+            <field name="price">20</field>
+        </record>
+
+        <record id="service28" model="service.service">
+            <field name="provider_id">3</field>
+            <field name="page_type">Visiting Card</field>
+            <field name="printing_type">Color</field>
+            <field name="description">One Side</field>
+            <field name="price">2</field>
+        </record>
+
+
+	</data>
+</odoo>

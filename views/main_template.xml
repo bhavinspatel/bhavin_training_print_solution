@@ -1,0 +1,142 @@
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="user_list">
+			<field name="name">User List</field>
+			<field name="model">user.user</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+					<field name="email" />
+					<field name="mobile" />
+					<field name="address" />
+					<field name="city" />
+					<field name="district" />
+					<field name="pincode" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="user_form">
+			<field name="name">User Form</field>
+			<field name="model">user.user</field>
+			<field name="arch" type="xml">
+				<form name="User Form">
+					<sheet>
+						<group>
+							<field name="name" />
+							<field name="email" />
+							<field name="mobile" />
+							<field name="address" />
+							<field name="city" />
+							<field name="district" />
+							<field name="pincode" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="user_action">
+			<field name="name">User</field>
+			<field name="res_model">user.user</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="provider_list">
+			<field name="name">Provider List</field>
+			<field name="model">provider.provider</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="owner_name" />
+					<field name="name" />
+					<field name="gst_number" />
+					<field name="email" />
+					<field name="mobile" />
+					<field name="address" />
+					<field name="city" />
+					<field name="district" />
+					<field name="pincode" />
+					<field name="open_time" />
+					<field name="closed_time" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="provider_form">
+			<field name="name">Provider Form</field>
+			<field name="model">provider.provider</field>
+			<field name="arch" type="xml">
+				<form name="Provider Form">
+					<sheet>
+						<group>
+							<field name="owner_name" />
+							<field name="name" />
+							<field name="gst_number" />
+							<field name="email" />
+							<field name="mobile" />
+							<field name="address" />
+							<field name="city" />
+							<field name="district" />
+							<field name="pincode" />
+							<field name="open_time" />
+							<field name="closed_time" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="provider_action">
+			<field name="name">Provider</field>
+			<field name="res_model">provider.provider</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="service_list">
+			<field name="name">Service List</field>
+			<field name="model">service.service</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="provider_id" />
+					<field name="page_type" />
+					<field name="printing_type" />
+					<field name="description" />
+					<field name="price" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="service_form">
+			<field name="name">service Form</field>
+			<field name="model">service.service</field>
+			<field name="arch" type="xml">
+				<form name="Service Form">
+					<sheet>
+						<group>
+							<field name="provider_id" />
+							<field name="page_type" />
+							<field name="printing_type" />
+							<field name="description" />
+							<field name="price" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="service_action">
+			<field name="name">Service</field>
+			<field name="res_model">service.service</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem name="Print Solution" id="menuitem_rootmenu" />
+		<menuitem name="User" id="menuitem_menu_user" parent="menuitem_rootmenu" action="user_action" />
+		<menuitem name="Provider" id="menuitem_menu_provider" parent="menuitem_rootmenu" action="provider_action" />
+		<menuitem name="Service" id="menuitem_menu_service" parent="menuitem_rootmenu" action="service_action" />
+
+	</data>
+</odoo>
