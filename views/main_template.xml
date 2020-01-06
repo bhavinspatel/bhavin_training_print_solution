@@ -133,10 +133,78 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
+
+		<record model="ir.ui.view" id="quotation_list">
+			<field name="name">Quotation List</field>
+			<field name="model">quotation.quotation</field>
+			<field name="arch" type="xml">
+				<tree decoration-danger="state=='pending'"
+					decoration-info="state=='progress'"
+					decoration-success="state=='done'">
+					<field name="name" />
+					<field name="page_size" />
+					<field name="start_date" />
+					<field name="end_date" />
+					<field name="state" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="quotation_form">
+			<field name="name">Quotation Form</field>
+			<field name="model">quotation.quotation</field>
+			<field name="arch" type="xml">
+				<form name="Quotation Form">
+					<header>
+						<button name="action_done" type="object" string="Done" class="btn-Success" states="progress"/>
+						<button name="action_progress" type="object" string="In Progress" class="btn-warning" states="pending" />
+						<button name="action_pending" type="object" string="Pending" class="btn-warning" states="pending" />
+						<field name="state" widget="statusbar" statusbar_visible="pending,progress,done"/>
+					</header>
+					<sheet>
+						<group>
+							<field name="name" />
+							<field name="page_size" />
+							<field name="start_date" />
+							<field name="end_date" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="quotation_calendar">
+			<field name="name">Quotation calendar</field>
+			<field name="model">quotation.quotation</field>
+			<field name="arch" type="xml">
+				<calendar string="calendar" date_start="start_date" date_stop="end_date" color="page_size">
+				    <field name="page_size"/>
+				</calendar>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="quotation_graph">
+			<field name="name">Quotation Graph</field>
+			<field name="model">quotation.quotation</field>
+			<field name="arch" type="xml">
+				<graph string="Graph View">
+				    <field name="name"/>
+				    <field name="page_size" type="measure"/>
+				</graph>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="quotation_action">
+			<field name="name">quotation</field>
+			<field name="res_model">quotation.quotation</field>
+			<field name="view_mode">tree,form,calendar,graph</field>
+		</record>
+
 		<menuitem name="Print Solution" id="menuitem_rootmenu" />
 		<menuitem name="User" id="menuitem_menu_user" parent="menuitem_rootmenu" action="user_action" />
 		<menuitem name="Provider" id="menuitem_menu_provider" parent="menuitem_rootmenu" action="provider_action" />
 		<menuitem name="Service" id="menuitem_menu_service" parent="menuitem_rootmenu" action="service_action" />
+		<menuitem name="Quotation" id="menuitem_menu_quotation" parent="menuitem_rootmenu" action="quotation_action" />
 
 	</data>
 </odoo>

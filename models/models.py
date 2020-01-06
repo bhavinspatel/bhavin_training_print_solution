@@ -87,3 +87,25 @@ class Services(models.Model):
 	printing_type = fields.Selection([('Black-White', 'Black-White'), ('Color', 'Color')], string="Printing Type", required=True)
 	description = fields.Char(string="Description", required=True)
 	price = fields.Float(string="Price", required=True)
+
+class Quotation(models.Model):
+	_name = 'quotation.quotation'
+	_description = 'Quotation List'
+
+	name = fields.Char(string="Quotation Name", required=True)
+	page_size = fields.Integer(string="Page Size", required=True)
+	start_date = fields.Date(string="Start Date", required=True)
+	end_date = fields.Date(string="End Date", required=True)
+	state = fields.Selection([('pending', 'Pending'), ('progress', 'In Progress'), ('done', 'Done')], string="state", required=True, default="pending")
+
+	def action_pending(self):
+		self.write({'state' : 'pending'})
+		return True
+
+	def action_progress(self):
+		self.write({'state' : 'progress'})
+		return True
+		
+	def action_done(self):
+		self.write({'state' : 'done'})
+		return True
