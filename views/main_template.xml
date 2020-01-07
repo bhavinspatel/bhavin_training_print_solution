@@ -127,10 +127,33 @@
 			</field>
 		</record>
 
+		<record model="ir.ui.view" id="service_kanban">
+			<field name="name">service kanban</field>
+			<field name="model">service.service</field>
+			<field name="arch" type="xml">
+				<kanban class="o_res_partner_kanban">
+					<field name="provider_id"/>
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_global_click">
+								<div t-attf-class="oe_kanban_content">
+									Shop Name: <field name="provider_id" /><br/>
+									Page Type: <field name="page_type" /><br/>
+									Printing Type: <field name="printing_type" /><br/>
+									Description: <field name="description" /><br/>
+									Price: <field name="price" />
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+
 		<record model="ir.actions.act_window" id="service_action">
 			<field name="name">Service</field>
 			<field name="res_model">service.service</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,form,kanban</field>
 		</record>
 
 
@@ -191,6 +214,23 @@
 				    <field name="name"/>
 				    <field name="page_size" type="measure"/>
 				</graph>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="quotation_search">
+			<field name="name">Quotation Graph</field>
+			<field name="model">quotation.quotation</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name" filter_domain="['|', ('name', 'ilike', self), ('state', 'ilike', self)]"/>
+					<field name="page_size"/>
+					<!-- <filter name="page_size" string="Page Size"
+							domain="[('page_size', '=', 10)]"/>
+					<group string="Group By">
+						<filter name="by_page_size" string="Page Size"
+								context="{'group_by': 'page_size'}"/>
+					</group> -->
+				</search>
 			</field>
 		</record>
 
