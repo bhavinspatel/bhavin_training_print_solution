@@ -1,0 +1,68 @@
+<odoo>
+	<template id="quotation_list">
+		<t t-call="website.layout">
+			<t t-set="title">Quotation</t>
+			<div class="container">
+				<h2><center>Quotation List</center></h2><h3><a class="align-right" t-attf-href="/quotation/new/">New Quotation</a></h3>
+				<p></p>            
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Start Date</th>
+							<th>End Date</th>
+							<th>State</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+					<t t-foreach="quotations" t-as="quotation">
+						<tr>
+							<td><p><t t-esc="quotation.name"/></p></td>
+							<td><p><t t-esc="quotation.start_date"/></p></td>
+							<td><p><t t-esc="quotation.end_date"/></p></td>
+							<td><p><t t-esc="quotation.state"/></p></td>
+							<td>
+								<a t-attf-href="/quotation/edit/{{ slug(quotation) }}"><i class="fa fa-edit" style='font-size:24px'></i></a>
+								<a t-attf-href="/quotation/delete/{{ slug(quotation) }}"><i class="fa fa-trash" style='font-size:24px'></i></a>
+							</td>
+						</tr>
+					</t>
+					</tbody>
+				</table>
+			</div>
+		</t>
+	</template>
+
+	<template id="create_and_edit_quotation">
+		<t t-call="website.layout">
+			<t t-set="title">Quotation</t>
+			<div class="container">
+				<h2>Quotation Form</h2>
+				<form action="/quotation/data/{{slug(quotation)}}" method="post">
+					<div class="form-group">
+						<label>Name</label>
+						<input type="text" t-attf-class="form-control" name="name" placeholder="Enter Name" />
+					</div>
+					<div class="form-group">
+						<label>Page Size</label>
+						<input type="text" class="form-control" name="page_size" placeholder="Enter Page Size"/>
+					</div>
+					<div class="form-group">
+						<label>Start Date</label>
+						<input type="date" class="form-control" name="page_size"/>
+					</div>
+					<div class="form-group">
+						<label>End Date</label>
+						<input type="date" class="form-control" name="page_size"/>
+					</div>
+					<div class="form-group">
+						<label>State</label>
+						<input type="text" class="form-control" name="state"/>
+					</div>
+					<button type="submit" class="btn btn-primary">Create</button>
+				</form>
+			</div>
+		</t>
+	</template>
+</odoo>
