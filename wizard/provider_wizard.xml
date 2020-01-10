@@ -1,0 +1,24 @@
+<odoo>
+    <record model="ir.ui.view" id="provider_wizard_form_view">
+        <field name="name">Wizard Form</field>
+        <field name="model">provider.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Service">
+                <group>
+                    <field name="provider_id"/>
+                    <field name="page_type" />
+                    <field name="printing_type" />
+                    <field name="description" />
+                    <field name="price" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="launch_service_wizard"
+                    name="Add Services"
+                    binding_model="provider.provider"
+                    res_model="provider.wizard"
+                    view_mode="form"
+                    target="new"/>
+</odoo>

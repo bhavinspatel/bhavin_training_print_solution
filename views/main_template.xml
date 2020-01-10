@@ -43,7 +43,6 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
-
 		<record model="ir.ui.view" id="provider_list">
 			<field name="name">Provider List</field>
 			<field name="model">provider.provider</field>
@@ -94,7 +93,6 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
-
 		<record model="ir.ui.view" id="service_list">
 			<field name="name">Service List</field>
 			<field name="model">service.service</field>
@@ -114,6 +112,9 @@
 			<field name="model">service.service</field>
 			<field name="arch" type="xml">
 				<form name="Service Form">
+					<header>
+						<button name="%(provider_action)d" type="action" string="Provider" class="btn-warning" />
+					</header>
 					<sheet>
 						<group>
 							<field name="provider_id" />
@@ -155,7 +156,6 @@
 			<field name="res_model">service.service</field>
 			<field name="view_mode">tree,form,kanban</field>
 		</record>
-
 
 		<record model="ir.ui.view" id="quotation_list">
 			<field name="name">Quotation List</field>
@@ -201,7 +201,7 @@
 			<field name="model">quotation.quotation</field>
 			<field name="arch" type="xml">
 				<calendar string="calendar" date_start="start_date" date_stop="end_date" color="page_size">
-				    <field name="page_size"/>
+					<field name="page_size"/>
 				</calendar>
 			</field>
 		</record>
@@ -211,8 +211,8 @@
 			<field name="model">quotation.quotation</field>
 			<field name="arch" type="xml">
 				<graph string="Graph View">
-				    <field name="name"/>
-				    <field name="page_size" type="measure"/>
+					<field name="name"/>
+					<field name="page_size" type="measure"/>
 				</graph>
 			</field>
 		</record>
@@ -224,20 +224,47 @@
 				<search>
 					<field name="name" filter_domain="['|', ('name', 'ilike', self), ('state', 'ilike', self)]"/>
 					<field name="page_size"/>
-					<!-- <filter name="page_size" string="Page Size"
-							domain="[('page_size', '=', 10)]"/>
+					<filter name="state" string="State : Done"
+							domain="[('state', '=', 'done')]"/>
+					<filter name="state" string="State : In Progress"
+							domain="[('state', '=', 'progress')]"/>
+					<filter name="state" string="State : Pending"
+							domain="[('state', '=', 'pending')]"/>
 					<group string="Group By">
 						<filter name="by_page_size" string="Page Size"
 								context="{'group_by': 'page_size'}"/>
-					</group> -->
+					</group>
 				</search>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="quotation_kanban">
+			<field name="name">Quotation kanban</field>
+			<field name="model">quotation.quotation</field>
+			<field name="arch" type="xml">
+				<kanban class="o_res_partner_kanban">
+					<!-- <progressbar field="state" colors="{'done': 'success'}" /> -->
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_global_click">
+								<div t-attf-class="oe_kanban_content">
+									Name: <field name="name" /><br/>
+									Page Size: <field name="page_size" /><br/>
+									Start Date: <field name="start_date" /><br/>
+									End Date: <field name="end_date" /><br/>
+									State: <field name="state" />
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
 			</field>
 		</record>
 
 		<record model="ir.actions.act_window" id="quotation_action">
 			<field name="name">quotation</field>
 			<field name="res_model">quotation.quotation</field>
-			<field name="view_mode">tree,form,calendar,graph</field>
+			<field name="view_mode">tree,form,calendar,graph,kanban</field>
 		</record>
 
 		<menuitem name="Print Solution" id="menuitem_rootmenu" />

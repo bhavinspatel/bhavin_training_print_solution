@@ -1,5 +1,6 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
 from odoo.exceptions import ValidationError
+
 
 class User(models.Model):
 	_name = 'user.user'
@@ -27,7 +28,7 @@ class User(models.Model):
 		for data in self:
 			if data.mobile and len(str(data.mobile)) != 10:
 				raise ValidationError("Fields mobile number must be 10 digit.")
-			
+
 			if data.pincode and len(str(data.pincode)) != 6:
 				raise ValidationError("Fields pincode must be 6 digit.")
 
@@ -63,7 +64,7 @@ class Provider(models.Model):
 		for data in self:
 			if data.mobile and len(str(data.mobile)) != 10:
 				raise ValidationError("Fields mobile number must be 10 digit.")
-			
+
 			if data.pincode and len(str(data.pincode)) != 6:
 				raise ValidationError("Fields pincode must be 6 digit.")
 
@@ -73,20 +74,20 @@ class Provider(models.Model):
 			s_id.unlink()
 		return super(Provider, self).unlink()
 
+
 class Services(models.Model):
 	_name = 'service.service'
 	_description = 'Services List'
 
 	provider_id = fields.Many2one(comodel_name="provider.provider", string="Shop Name", required=True)
-	page_type = fields.Selection([('A0 Page', 'A0 Page'), ('A1 Page', 'A1 Page'),
-									('A2 Page', 'A2 Page'), ('A3 Page', 'A3 Page'),
-									('A4 Page', 'A4 Page'), ('A5 Page', 'A5 Page'),
-									('A6 Page', 'A6 Page'), ('Flex Benner', 'Flex Benner'),
-									('Visiting Card', 'Visiting Card')], 
-									string="Page Type", required=True)
-	printing_type = fields.Selection([('Black-White', 'Black-White'), ('Color', 'Color')], string="Printing Type", required=True)
+	page_type = fields.Selection([('A0 Page', 'A0 Page'), ('A1 Page', 'A1 Page'), ('A2 Page', 'A2 Page'),
+		('A3 Page', 'A3 Page'), ('A4 Page', 'A4 Page'), ('A5 Page', 'A5 Page'), ('A6 Page', 'A6 Page'),
+		('Flex Benner', 'Flex Benner'), ('Visiting Card', 'Visiting Card')], string="Page Type", required=True)
+	printing_type = fields.Selection([('Black-White', 'Black-White'), ('Color', 'Color')], 
+		string="Printing Type", required=True)
 	description = fields.Char(string="Description", required=True)
 	price = fields.Float(string="Price", required=True)
+
 
 class Quotation(models.Model):
 	_name = 'quotation.quotation'
@@ -99,13 +100,26 @@ class Quotation(models.Model):
 	state = fields.Selection([('pending', 'Pending'), ('progress', 'In Progress'), ('done', 'Done')], string="state", required=True, default="pending")
 
 	def action_pending(self):
-		self.write({'state' : 'pending'})
+		self.write({'state': 'pending'})
 		return True
 
 	def action_progress(self):
-		self.write({'state' : 'progress'})
+		self.write({'state': 'progress'})
 		return True
-		
+
 	def action_done(self):
-		self.write({'state' : 'done'})
+		self.write({'state': 'done'})
 		return True
+
+	# @api.model
+	# def create(self, vals):
+	# 	print(vals['state'])
+	# 	return super(Quotation, self).create(vals)
+
+	# def write(self, vals):
+	# 	print(vals['name'])
+	# 	return super(Quotation, self).write(vals)
+
+	# @api.returns('self', lambda value: value.id)
+	# def copy(self, default=None):
+	# 	print('You cannot duplicate quotation.')

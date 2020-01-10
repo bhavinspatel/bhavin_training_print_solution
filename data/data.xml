@@ -293,6 +293,47 @@
             <field name="price">2</field>
         </record>
 
+                <!-- Quotation Data -->
+
+<!--         <record id="quotation0" model="quotation.quotation">
+            <field name="name">Quotation 1</field>
+            <field name="page_size">10</field>
+            <field name="start_date">20200108</field>
+            <field name="end_date">20200109</field>
+            <field name="state">done</field>
+        </record>
+
+        <record id="quotation1" model="quotation.quotation">
+            <field name="name">Quotation 2</field>
+            <field name="page_size">20</field>
+            <field name="start_date">20200110</field>
+            <field name="end_date">20200112</field>
+            <field name="state">progress</field>
+        </record>
+
+        <record id="quotation2" model="quotation.quotation">
+            <field name="name">Quotation 3</field>
+            <field name="page_size">25</field>
+            <field name="start_date">20200108</field>
+            <field name="end_date">20200112</field>
+            <field name="state">progress</field>
+        </record>
+
+        <record id="quotation3" model="quotation.quotation">
+            <field name="name">Quotation 4</field>
+            <field name="page_size">5</field>
+            <field name="start_date">20200112</field>
+            <field name="end_date">20200115</field>
+            <field name="state">pending</field>
+        </record>
+
+        <record id="quotation4" model="quotation.quotation">
+            <field name="name">Quotation 5</field>
+            <field name="page_size">410</field>
+            <field name="start_date">20200112</field>
+            <field name="end_date">20200116</field>
+            <field name="state">pending</field>
+        </record> -->
 
 	</data>
 </odoo>

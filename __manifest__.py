@@ -7,10 +7,12 @@
 	'depends' : ['base'],
 	'data' : [
 		'security/ir.model.access.csv',
+		'data/data.xml',
+		'wizard/provider_wizard.xml',
+		'report/report.xml',
 		'views/main_template.xml'
 	],
 	'demo' : [
-		'data/demo.xml'
 	],
-	'application' : True
+	'application': True
 }
