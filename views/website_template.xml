@@ -39,28 +39,32 @@
 			<t t-set="title">Quotation</t>
 			<div class="container">
 				<h2>Quotation Form</h2>
-				<form action="/quotation/data/{{slug(quotation)}}" method="post">
+				<form t-attf-action="/quotation/data/#{quotation.id if quotation else ''}" method="post">
 					<div class="form-group">
 						<label>Name</label>
-						<input type="text" t-attf-class="form-control" name="name" placeholder="Enter Name" />
+						<input type="text" class="form-control" name="name" placeholder="Enter Name" t-attf-value="#{quotation.name if quotation else ''}" />
 					</div>
 					<div class="form-group">
 						<label>Page Size</label>
-						<input type="text" class="form-control" name="page_size" placeholder="Enter Page Size"/>
+						<input type="text" class="form-control" name="page_size" placeholder="Enter Page Size" t-attf-value="#{quotation.page_size if quotation else ''}"/>
 					</div>
 					<div class="form-group">
 						<label>Start Date</label>
-						<input type="date" class="form-control" name="page_size"/>
+						<input type="text" class="form-control" name="start_date" t-attf-value="#{quotation.start_date if quotation else ''}"/>
 					</div>
 					<div class="form-group">
 						<label>End Date</label>
-						<input type="date" class="form-control" name="page_size"/>
+						<input type="text" class="form-control" name="end_date" t-attf-value="#{quotation.end_date if quotation else ''}"/>
 					</div>
 					<div class="form-group">
 						<label>State</label>
-						<input type="text" class="form-control" name="state"/>
+						<select name="state">
+							<option value="pending" "{{'selected' if quotation.state == 'done' else ''}}">Pending</option>
+							<option value="progress">In Progress</option>
+							<option value="done">Done</option>
+						</select>
 					</div>
-					<button type="submit" class="btn btn-primary">Create</button>
+					<input type="submit" class="btn btn-primary" t-attf-value="#{'Update' if quotation else 'Create'}" />
 				</form>
 			</div>
 		</t>
