@@ -50,15 +50,15 @@
 					</div>
 					<div class="form-group">
 						<label>Start Date</label>
-						<input type="text" class="form-control" name="start_date" t-attf-value="#{quotation.start_date if quotation else ''}"/>
+						<input type="text" class="form-control" name="start_date" placeholder="Enter Start Date" t-attf-value="#{quotation.start_date if quotation else ''}"/>
 					</div>
 					<div class="form-group">
 						<label>End Date</label>
-						<input type="text" class="form-control" name="end_date" t-attf-value="#{quotation.end_date if quotation else ''}"/>
+						<input type="text" class="form-control" name="end_date" placeholder="Enter End Date" t-attf-value="#{quotation.end_date if quotation else ''}"/>
 					</div>
 					<div class="form-group">
 						<label>State</label>
-						<select name="state">
+						<select class="form-control" name="state">
 							<option value="pending">Pending</option>
 							<option value="progress">In Progress</option>
 							<option value="done">Done</option>
