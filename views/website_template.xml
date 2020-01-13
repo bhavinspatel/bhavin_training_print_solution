@@ -59,7 +59,7 @@
 					<div class="form-group">
 						<label>State</label>
 						<select name="state">
-							<option value="pending" "{{'selected' if quotation.state == 'done' else ''}}">Pending</option>
+							<option value="pending">Pending</option>
 							<option value="progress">In Progress</option>
 							<option value="done">Done</option>
 						</select>
