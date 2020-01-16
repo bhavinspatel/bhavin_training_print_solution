@@ -123,3 +123,10 @@ class Quotation(models.Model):
 	# @api.returns('self', lambda value: value.id)
 	# def copy(self, default=None):
 	# 	print('You cannot duplicate quotation.')
+
+class Image(models.Model):
+	_name = 'print.image'
+	_description = 'Print Images'
+
+	name = fields.Char(string="Name")
+	image = fields.Binary(string="Image", attachment=True)

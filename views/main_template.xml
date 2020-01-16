@@ -1,6 +1,57 @@
 <odoo>
 	<data>
 
+		<record model="ir.ui.view" id="image_list">
+			<field name="name">Image</field>
+			<field name="model">print.image</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+					<field name="image" widget='image' class="oe_avatar"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="image_form">
+			<field name="name">Image</field>
+			<field name="model">print.image</field>
+			<field name="arch" type="xml">
+				<form name="User Form">
+					<sheet>
+						<group>
+							<field name="name" />
+							<field name="image" widget='image' class="oe_avatar"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="image_kanban">
+			<field name="name">Image</field>
+			<field name="model">print.image</field>
+			<field name="arch" type="xml">
+				<kanban class="o_res_partner_kanban">
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_global_click">
+								<div t-attf-class="oe_kanban_content">
+									Name: <field name="name" />
+									<field name="image" widget="image" />
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="image_action">
+			<field name="name">Image</field>
+			<field name="res_model">print.image</field>
+			<field name="view_mode">tree,form,kanban</field>
+		</record>
+
 		<record model="ir.ui.view" id="user_list">
 			<field name="name">User List</field>
 			<field name="model">user.user</field>
@@ -272,6 +323,7 @@
 		<menuitem name="Provider" id="menuitem_menu_provider" parent="menuitem_rootmenu" action="provider_action" />
 		<menuitem name="Service" id="menuitem_menu_service" parent="menuitem_rootmenu" action="service_action" />
 		<menuitem name="Quotation" id="menuitem_menu_quotation" parent="menuitem_rootmenu" action="quotation_action" />
+		<menuitem name="Image" id="menuitem_menu_image" parent="menuitem_rootmenu" action="image_action" />
 
 	</data>
 </odoo>
