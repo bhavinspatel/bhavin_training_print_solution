@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_user_user,access_user_user,model_user_user,base.group_user,1,1,1,1
 access_provider_provider,access_provider_provider,model_provider_provider,base.group_user,1,1,1,1
-access_service_service,access_service_service,model_service_service,base.group_user,1,1,1,1
-access_quotation_quotation,access_quotation_quotation,model_quotation_quotation,base.group_user,1,1,1,1
-access_print_image,access_print_image,model_print_image,base.group_user,1,1,1,1
+access_object_object,access_object_object,model_object_object,base.group_user,1,1,1,1
+access_inquiry_inquiry,access_inquiry_inquiry,model_inquiry_inquiry,base.group_user,1,1,1,1
+access_jobwork_jobwork,access_jobwork_jobwork,model_jobwork_jobwork,base.group_user,1,1,1,1

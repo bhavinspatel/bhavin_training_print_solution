@@ -1,57 +1,6 @@
 <odoo>
 	<data>
 
-		<record model="ir.ui.view" id="image_list">
-			<field name="name">Image</field>
-			<field name="model">print.image</field>
-			<field name="arch" type="xml">
-				<tree>
-					<field name="name" />
-					<field name="image" widget='image' class="oe_avatar"/>
-				</tree>
-			</field>
-		</record>
-
-		<record model="ir.ui.view" id="image_form">
-			<field name="name">Image</field>
-			<field name="model">print.image</field>
-			<field name="arch" type="xml">
-				<form name="User Form">
-					<sheet>
-						<group>
-							<field name="name" />
-							<field name="image" widget='image' class="oe_avatar"/>
-						</group>
-					</sheet>
-				</form>
-			</field>
-		</record>
-
-		<record model="ir.ui.view" id="image_kanban">
-			<field name="name">Image</field>
-			<field name="model">print.image</field>
-			<field name="arch" type="xml">
-				<kanban class="o_res_partner_kanban">
-					<templates>
-						<t t-name="kanban-box">
-							<div t-attf-class="oe_kanban_global_click">
-								<div t-attf-class="oe_kanban_content">
-									Name: <field name="name" />
-									<field name="image" widget="image" />
-								</div>
-							</div>
-						</t>
-					</templates>
-				</kanban>
-			</field>
-		</record>
-
-		<record model="ir.actions.act_window" id="image_action">
-			<field name="name">Image</field>
-			<field name="res_model">print.image</field>
-			<field name="view_mode">tree,form,kanban</field>
-		</record>
-
 		<record model="ir.ui.view" id="user_list">
 			<field name="name">User List</field>
 			<field name="model">user.user</field>
@@ -144,56 +93,43 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
-		<record model="ir.ui.view" id="service_list">
-			<field name="name">Service List</field>
-			<field name="model">service.service</field>
+		<record model="ir.ui.view" id="object_list">
+			<field name="name">object List</field>
+			<field name="model">object.object</field>
 			<field name="arch" type="xml">
 				<tree>
-					<field name="provider_id" />
-					<field name="page_type" />
-					<field name="printing_type" />
-					<field name="description" />
-					<field name="price" />
+					<field name="name" />
+					<field name="object_type" />
 				</tree>
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="service_form">
-			<field name="name">service Form</field>
-			<field name="model">service.service</field>
+		<record model="ir.ui.view" id="object_form">
+			<field name="name">object Form</field>
+			<field name="model">object.object</field>
 			<field name="arch" type="xml">
-				<form name="Service Form">
-					<header>
-						<button name="%(provider_action)d" type="action" string="Provider" class="btn-warning" />
-					</header>
+				<form name="object Form">
 					<sheet>
 						<group>
-							<field name="provider_id" />
-							<field name="page_type" />
-							<field name="printing_type" />
-							<field name="description" />
-							<field name="price" />
+							<field name="name" />
+							<field name="object_type" />
 						</group>
 					</sheet>
 				</form>
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="service_kanban">
-			<field name="name">service kanban</field>
-			<field name="model">service.service</field>
+		<record model="ir.ui.view" id="object_kanban">
+			<field name="name">object kanban</field>
+			<field name="model">object.object</field>
 			<field name="arch" type="xml">
 				<kanban class="o_res_partner_kanban">
-					<field name="provider_id"/>
 					<templates>
 						<t t-name="kanban-box">
 							<div t-attf-class="oe_kanban_global_click">
 								<div t-attf-class="oe_kanban_content">
-									Shop Name: <field name="provider_id" /><br/>
-									Page Type: <field name="page_type" /><br/>
-									Printing Type: <field name="printing_type" /><br/>
-									Description: <field name="description" /><br/>
-									Price: <field name="price" />
+									Object Name : <field name="name" /><br/>
+									Object Type : <field name="object_type" />
 								</div>
 							</div>
 						</t>
@@ -202,128 +138,166 @@
 			</field>
 		</record>
 
-		<record model="ir.actions.act_window" id="service_action">
-			<field name="name">Service</field>
-			<field name="res_model">service.service</field>
+		<record model="ir.actions.act_window" id="object_action">
+			<field name="name">object</field>
+			<field name="res_model">object.object</field>
 			<field name="view_mode">tree,form,kanban</field>
 		</record>
 
-		<record model="ir.ui.view" id="quotation_list">
-			<field name="name">Quotation List</field>
-			<field name="model">quotation.quotation</field>
+		<record model="ir.ui.view" id="inquiry_list">
+			<field name="name">inquiry List</field>
+			<field name="model">inquiry.inquiry</field>
 			<field name="arch" type="xml">
-				<tree decoration-danger="state=='pending'"
-					decoration-info="state=='progress'"
-					decoration-success="state=='done'">
-					<field name="name" />
-					<field name="page_size" />
-					<field name="start_date" />
-					<field name="end_date" />
-					<field name="state" />
+				<tree>
+					<field name="object_id" />
+					<field name="attachment" />
+					<field name="provider_id" />
+					<field name="location" />
+					<field name="remark" />
 				</tree>
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="quotation_form">
-			<field name="name">Quotation Form</field>
-			<field name="model">quotation.quotation</field>
+		<record model="ir.ui.view" id="inquiry_form">
+			<field name="name">inquiry Form</field>
+			<field name="model">inquiry.inquiry</field>
 			<field name="arch" type="xml">
-				<form name="Quotation Form">
-					<header>
-						<button name="action_done" type="object" string="Done" class="btn-Success" states="progress"/>
-						<button name="action_progress" type="object" string="In Progress" class="btn-warning" states="pending" />
-						<button name="action_pending" type="object" string="Pending" class="btn-warning" states="pending" />
-						<field name="state" widget="statusbar" statusbar_visible="pending,progress,done"/>
-					</header>
+				<form name="inquiry Form">
 					<sheet>
 						<group>
-							<field name="name" />
-							<field name="page_size" />
-							<field name="start_date" />
-							<field name="end_date" />
+							<field name="object_id" />
+							<field name="attachment" />
+							<field name="provider_id" />
+							<field name="location" />
+							<field name="remark" />
 						</group>
 					</sheet>
 				</form>
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="quotation_calendar">
-			<field name="name">Quotation calendar</field>
-			<field name="model">quotation.quotation</field>
+		<record model="ir.ui.view" id="inquiry_kanban">
+			<field name="name">inquiry kanban</field>
+			<field name="model">inquiry.inquiry</field>
 			<field name="arch" type="xml">
-				<calendar string="calendar" date_start="start_date" date_stop="end_date" color="page_size">
-					<field name="page_size"/>
-				</calendar>
+				<kanban class="o_res_partner_kanban">
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_global_click">
+								<div t-attf-class="oe_kanban_content">
+									Object Name : <field name="object_id" /><br/>
+									Attachment : <field name="attachment" /><br/>
+									Provider Name : <field name="provider_id" /><br/>
+									Delivery Location : <field name="location" /><br/>
+									Remark : <field name="remark" />
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="quotation_graph">
-			<field name="name">Quotation Graph</field>
-			<field name="model">quotation.quotation</field>
+		<record model="ir.actions.act_window" id="inquiry_action">
+			<field name="name">inquiry</field>
+			<field name="res_model">inquiry.inquiry</field>
+			<field name="view_mode">tree,form,kanban</field>
+		</record>
+
+		<record model="ir.ui.view" id="jobwork_list">
+			<field name="name">JobWork List</field>
+			<field name="model">jobwork.jobwork</field>
 			<field name="arch" type="xml">
-				<graph string="Graph View">
-					<field name="name"/>
-					<field name="page_size" type="measure"/>
+				<tree>
+					<field name="inquiry_id" />
+					<field name="attachment" />
+					<field name="start" />
+					<field name="end" />
+					<field name="price" />
+					<field name="customer_id" />
+					<field name="location" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="jobwork_form">
+			<field name="name">JobWork Form</field>
+			<field name="model">jobwork.jobwork</field>
+			<field name="arch" type="xml">
+				<form name="JobWork Form">
+					<sheet>
+						<group>
+						<group>
+							<field name="inquiry_id" />
+							<field name="start" />
+							<field name="end" />
+							<field name="price" />
+							<field name="customer_id" />
+						</group>
+						<group>
+							<field name="location" />
+							<field name="attachment" />
+							<field name="provider_id" />
+							<field name="remark" />
+						</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="jobwork_kanban">
+			<field name="name">JobWork kanban</field>
+			<field name="model">jobwork.jobwork</field>
+			<field name="arch" type="xml">
+				<kanban class="o_res_partner_kanban">
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_global_click">
+								<div t-attf-class="oe_kanban_content">
+									Inquiry Name : <field name="inquiry_id" /><br/>
+									Attachment : <field name="attachment" /><br/>
+									Start Printing : <field name="start" /><br/>
+									End Printing : <field name="end" /><br/>
+									Price : <field name="price" /><br/>
+									Customer Name : <field name="customer_id" /><br/>
+									Delivery Location : <field name="location" />
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="jobwork_graph">
+			<field name="name">JobWork Garph</field>
+			<field name="model">jobwork.jobwork</field>
+			<field name="arch" type="xml">
+				<graph>
+					<field name="inquiry_id" />
 				</graph>
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="quotation_search">
-			<field name="name">Quotation Graph</field>
-			<field name="model">quotation.quotation</field>
-			<field name="arch" type="xml">
-				<search>
-					<field name="name" filter_domain="['|', ('name', 'ilike', self), ('state', 'ilike', self)]"/>
-					<field name="page_size"/>
-					<filter name="state" string="State : Done"
-							domain="[('state', '=', 'done')]"/>
-					<filter name="state" string="State : In Progress"
-							domain="[('state', '=', 'progress')]"/>
-					<filter name="state" string="State : Pending"
-							domain="[('state', '=', 'pending')]"/>
-					<group string="Group By">
-						<filter name="by_page_size" string="Page Size"
-								context="{'group_by': 'page_size'}"/>
-					</group>
-				</search>
-			</field>
+		<record model="ir.actions.act_window" id="jobwork_action">
+			<field name="name">JobWork</field>
+			<field name="res_model">jobwork.jobwork</field>
+			<field name="view_mode">tree,form,kanban,graph</field>
 		</record>
 
-		<record model="ir.ui.view" id="quotation_kanban">
-			<field name="name">Quotation kanban</field>
-			<field name="model">quotation.quotation</field>
-			<field name="arch" type="xml">
-				<kanban class="o_res_partner_kanban">
-					<!-- <progressbar field="state" colors="{'done': 'success'}" /> -->
-					<templates>
-						<t t-name="kanban-box">
-							<div t-attf-class="oe_kanban_global_click">
-								<div t-attf-class="oe_kanban_content">
-									Name: <field name="name" /><br/>
-									Page Size: <field name="page_size" /><br/>
-									Start Date: <field name="start_date" /><br/>
-									End Date: <field name="end_date" /><br/>
-									State: <field name="state" />
-								</div>
-							</div>
-						</t>
-					</templates>
-				</kanban>
-			</field>
-		</record>
-
-		<record model="ir.actions.act_window" id="quotation_action">
-			<field name="name">quotation</field>
-			<field name="res_model">quotation.quotation</field>
-			<field name="view_mode">tree,form,calendar,graph,kanban</field>
-		</record>
-
-		<menuitem name="Print Solution" id="menuitem_rootmenu" />
-		<menuitem name="User" id="menuitem_menu_user" parent="menuitem_rootmenu" action="user_action" />
-		<menuitem name="Provider" id="menuitem_menu_provider" parent="menuitem_rootmenu" action="provider_action" />
-		<menuitem name="Service" id="menuitem_menu_service" parent="menuitem_rootmenu" action="service_action" />
-		<menuitem name="Quotation" id="menuitem_menu_quotation" parent="menuitem_rootmenu" action="quotation_action" />
-		<menuitem name="Image" id="menuitem_menu_image" parent="menuitem_rootmenu" action="image_action" />
+		<menuitem name="Print Service" id="menuitem_rootmenu" web_icon="bhavin_training_print_solution,static/description/icon1.png" />
+			<menuitem name="Registration" id="menuitem_menu_registration" parent="menuitem_rootmenu" sequence="1"/>
+				<menuitem name="User" id="menuitem_menu_user" parent="menuitem_menu_registration" action="user_action" />
+				<menuitem name="Provider" id="menuitem_menu_provider" parent="menuitem_menu_registration" action="provider_action" />
+			<menuitem name="Inquiry" id="menuitem_menu_inquiry" parent="menuitem_rootmenu" sequence="2"/>
+				<menuitem name="Inquiry" id="submenu_inquiry" parent="menuitem_menu_inquiry" action="inquiry_action" />
+			<menuitem name="JobWork" id="menuitem_menu_jobwork" parent="menuitem_rootmenu" sequence="3"/>
+				<menuitem name="JobWork" id="submenu_jobwork" parent="menuitem_menu_jobwork" action="jobwork_action" />
+			<menuitem name="Report" id="menuitem_menu_report" parent="menuitem_rootmenu" sequence="4"/>
+				<menuitem name="Dashboard" id="submenu_dashboard" parent="menuitem_menu_report" />
+			<menuitem name="Configuration" id="menuitem_menu_configuration" parent="menuitem_rootmenu" sequence="5"/>
+				<menuitem name="Object" id="submenu_object" parent="menuitem_menu_configuration" action="object_action" />
 
 	</data>
 </odoo>

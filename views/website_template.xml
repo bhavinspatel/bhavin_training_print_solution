@@ -83,21 +83,4 @@
 			</div>
 		</t>
 	</template>
-
-	<template id="print_image">
-		<t t-call="website.layout">
-			<t t-set="title">Quotation</t>
-			<div class="container">
-				<form action="/image/store" method="post">
-					<input type="file" name="image" class="form-control"/>
-					<input type="submit" value="Upload" class="btn btn-primary"/>
-				</form>
-				<t t-foreach="images" t-as="i">
-					<a t-attf-href="/image/delete/{{ slug(i) }}">
-						<img t-attf-src="data:image/*; base64,{{i.image}}" height="300" width="300" style="margin: 20px"/>
-					</a>
-				</t>
-			</div>
-		</t>
-	</template>
 </odoo>

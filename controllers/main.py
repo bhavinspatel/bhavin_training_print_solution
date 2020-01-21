@@ -1,6 +1,5 @@
 from odoo import http
 from odoo.http import request
-import base64
 
 class PrintSolution(http.Controller):
 
@@ -29,23 +28,3 @@ class PrintSolution(http.Controller):
 			else:
 				request.env['quotation.quotation'].create(post)
 		return request.redirect('/quotation/list/')
-
-	@http.route('/image', auth="public", website=True, csrf=False)
-	def printImage(self):
-		images = request.env['print.image'].search([])
-		return request.render('bhavin_training_print_solution.print_image', {'images' : images})
-
-	@http.route(['/image/store', '/image/delete/<model("print.image"):remove_image>'], auth="public", method="post", website=True, csrf=False)
-	def printStoreImage(self, remove_image=None, **post):
-		if remove_image:
-			remove_image.unlink()
-			return request.redirect('/image')
-		file = []
-		if post:
-			file_name = post.get('image')
-			image_file = '../Pictures/' + file_name
-			if image_file == '../Pictures/' or '../Pictures/' not in image_file:
-				return request.redirect('/image')
-			img = open(image_file, "rb")
-			request.env['print.image'].create({'image' : base64.encodestring(img.read())})
-		return request.redirect('/image')
