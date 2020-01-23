@@ -149,8 +149,10 @@
 			<field name="model">inquiry.inquiry</field>
 			<field name="arch" type="xml">
 				<tree>
+					<field name="name" />
 					<field name="object_id" />
 					<field name="attachment" />
+					<field name="cust_id" />
 					<field name="provider_id" />
 					<field name="location" />
 					<field name="remark" />
@@ -165,8 +167,10 @@
 				<form name="inquiry Form">
 					<sheet>
 						<group>
+							<field name="name" />
 							<field name="object_id" />
 							<field name="attachment" />
+							<field name="cust_id" />
 							<field name="provider_id" />
 							<field name="location" />
 							<field name="remark" />
@@ -185,6 +189,7 @@
 						<t t-name="kanban-box">
 							<div t-attf-class="oe_kanban_global_click">
 								<div t-attf-class="oe_kanban_content">
+									Inquiry Name : <field name="name" /><br/>
 									Object Name : <field name="object_id" /><br/>
 									Attachment : <field name="attachment" /><br/>
 									Provider Name : <field name="provider_id" /><br/>
@@ -204,51 +209,76 @@
 			<field name="view_mode">tree,form,kanban</field>
 		</record>
 
-		<record model="ir.ui.view" id="jobwork_list">
-			<field name="name">JobWork List</field>
-			<field name="model">jobwork.jobwork</field>
+		<record model="ir.ui.view" id="order_list">
+			<field name="name">Order List</field>
+			<field name="model">order.order</field>
 			<field name="arch" type="xml">
 				<tree>
 					<field name="inquiry_id" />
+					<field name="object_id" />
 					<field name="attachment" />
 					<field name="start" />
 					<field name="end" />
 					<field name="price" />
-					<field name="customer_id" />
+					<field name="cust_id" />
 					<field name="location" />
+					<field name="state" />
 				</tree>
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="jobwork_form">
-			<field name="name">JobWork Form</field>
-			<field name="model">jobwork.jobwork</field>
+		<record model="ir.ui.view" id="order_form">
+			<field name="name">Order Form</field>
+			<field name="model">order.order</field>
 			<field name="arch" type="xml">
-				<form name="JobWork Form">
+				<form name="Order Form">
+					<header>
+						<button name="action_pending" states="progress,complated" string="Pending" type="object" class="btn-denger"/>
+						<button name="action_progress" states="pending,complated" string="In Progress" type="object" class="btn-dark"/>
+						<button name="action_complated" states="pending,progress" string="Complated" type="object" class="btn-success"/>
+						<field name="state" widget="statusbar" statusbar_visible="pending,progress,complated" clickble="True" />
+					</header>
 					<sheet>
 						<group>
-						<group>
-							<field name="inquiry_id" />
-							<field name="start" />
-							<field name="end" />
-							<field name="price" />
-							<field name="customer_id" />
+							<group>
+								<field name="inquiry_id" />
+							</group>
+							<group>
+							</group>
 						</group>
 						<group>
-							<field name="location" />
-							<field name="attachment" />
-							<field name="provider_id" />
-							<field name="remark" />
+							<group>
+								<field name="object_id" />
+								<field name="location" />
+								<field name="attachment" />
+							</group>
+							<group>
+								<field name="cust_id" />
+								<field name="provider_id" />
+								<field name="remark" />
+							</group>
 						</group>
-						</group>
+						<notebook>
+							<page string="Order">
+							<group>
+								<group>
+									<field name="start" />
+									<field name="end" />
+									<field name="price" />
+								</group>
+								<group>
+								</group>
+							</group>
+							</page>
+						</notebook>
 					</sheet>
 				</form>
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="jobwork_kanban">
-			<field name="name">JobWork kanban</field>
-			<field name="model">jobwork.jobwork</field>
+		<record model="ir.ui.view" id="order_kanban">
+			<field name="name">Order kanban</field>
+			<field name="model">order.order</field>
 			<field name="arch" type="xml">
 				<kanban class="o_res_partner_kanban">
 					<templates>
@@ -256,12 +286,14 @@
 							<div t-attf-class="oe_kanban_global_click">
 								<div t-attf-class="oe_kanban_content">
 									Inquiry Name : <field name="inquiry_id" /><br/>
+									Object Name : <field name="object_id" /><br/>
 									Attachment : <field name="attachment" /><br/>
 									Start Printing : <field name="start" /><br/>
 									End Printing : <field name="end" /><br/>
 									Price : <field name="price" /><br/>
-									Customer Name : <field name="customer_id" /><br/>
-									Delivery Location : <field name="location" />
+									Customer Name : <field name="cust_id" /><br/>
+									Delivery Location : <field name="location" /><br/>
+									Status : <field name="state" />
 								</div>
 							</div>
 						</t>
@@ -270,32 +302,60 @@
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="jobwork_graph">
-			<field name="name">JobWork Garph</field>
-			<field name="model">jobwork.jobwork</field>
+		<record model="ir.ui.view" id="order_graph">
+			<field name="name">order Garph</field>
+			<field name="model">order.order</field>
 			<field name="arch" type="xml">
 				<graph>
-					<field name="inquiry_id" />
+					<field name="state" />
 				</graph>
 			</field>
 		</record>
 
-		<record model="ir.actions.act_window" id="jobwork_action">
-			<field name="name">JobWork</field>
-			<field name="res_model">jobwork.jobwork</field>
-			<field name="view_mode">tree,form,kanban,graph</field>
+		<record model="ir.ui.view" id="order_pivot">
+			<field name="name">order pivot</field>
+			<field name="model">order.order</field>
+			<field name="arch" type="xml">
+				<pivot>
+					<field name="object_id" type="row" />
+					<field name="state" type="col" />
+				</pivot>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="order_action">
+			<field name="name">order</field>
+			<field name="res_model">order.order</field>
+			<field name="view_mode">tree,form,kanban,graph,pivot</field>
+		</record>
+
+		<record model="ir.ui.view" id="order_pivot">
+			<field name="name">order pivot</field>
+			<field name="model">order.order</field>
+			<field name="arch" type="xml">
+				<dashboard>
+					<view type="pivot" ref="order_pivot" />
+					<view type="graph" ref="order_graph" />
+				</dashboard>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="dashboard_action">
+			<field name="name">Dashboard</field>
+			<field name="res_model">order.order</field>
+			<field name="view_mode">dashboard,graph,pivot</field>
 		</record>
 
 		<menuitem name="Print Service" id="menuitem_rootmenu" web_icon="bhavin_training_print_solution,static/description/icon1.png" />
 			<menuitem name="Registration" id="menuitem_menu_registration" parent="menuitem_rootmenu" sequence="1"/>
-				<menuitem name="User" id="menuitem_menu_user" parent="menuitem_menu_registration" action="user_action" />
-				<menuitem name="Provider" id="menuitem_menu_provider" parent="menuitem_menu_registration" action="provider_action" />
+				<menuitem name="Users" id="menuitem_menu_user" parent="menuitem_menu_registration" action="user_action" />
+				<menuitem name="Job Workers" id="menuitem_menu_provider" parent="menuitem_menu_registration" action="provider_action" />
 			<menuitem name="Inquiry" id="menuitem_menu_inquiry" parent="menuitem_rootmenu" sequence="2"/>
 				<menuitem name="Inquiry" id="submenu_inquiry" parent="menuitem_menu_inquiry" action="inquiry_action" />
-			<menuitem name="JobWork" id="menuitem_menu_jobwork" parent="menuitem_rootmenu" sequence="3"/>
-				<menuitem name="JobWork" id="submenu_jobwork" parent="menuitem_menu_jobwork" action="jobwork_action" />
+			<menuitem name="order" id="menuitem_menu_order" parent="menuitem_rootmenu" sequence="3"/>
+				<menuitem name="order" id="submenu_order" parent="menuitem_menu_order" action="order_action" />
 			<menuitem name="Report" id="menuitem_menu_report" parent="menuitem_rootmenu" sequence="4"/>
-				<menuitem name="Dashboard" id="submenu_dashboard" parent="menuitem_menu_report" />
+				<menuitem name="Dashboard" id="submenu_dashboard" parent="menuitem_menu_report" action="dashboard_action" />
 			<menuitem name="Configuration" id="menuitem_menu_configuration" parent="menuitem_rootmenu" sequence="5"/>
 				<menuitem name="Object" id="submenu_object" parent="menuitem_menu_configuration" action="object_action" />
 
