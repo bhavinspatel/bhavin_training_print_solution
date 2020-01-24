@@ -32,6 +32,26 @@
             <field name="email">vivek@gmail.com</field>
         </record>
 
+        <record id="user3" model="user.user">
+            <field name="name">Sahista Pathan</field>
+            <field name="address">Viramgam</field>
+            <field name="city">Viramgam</field>
+            <field name="district">Gandhinagar</field>
+            <field name="pincode">360048</field>
+            <field name="mobile">9569854565</field>
+            <field name="email">sp@gmail.com</field>
+        </record>
+
+        <record id="user4" model="user.user">
+            <field name="name">Harjindar Kaur</field>
+            <field name="address">Kadi</field>
+            <field name="city">Kadi</field>
+            <field name="district">Gandhinagar</field>
+            <field name="pincode">360048</field>
+            <field name="mobile">9584856255</field>
+            <field name="email">harji@gmail.com</field>
+        </record>
+
 				<!-- Provider Data -->
 
         <record id="provider0" model="provider.provider">
@@ -100,7 +120,7 @@
             <field name="object_id" ref="bhavin_training_print_solution.Object0" />
             <field name="cust_id" ref="bhavin_training_print_solution.user0" />
             <field name="provider_id" ref="bhavin_training_print_solution.provider0" />
-            <field name="attachment" file="bhavin_training_print_solution/static/src/demo_file/1.jpg" type="base64" />
+            <field name="image" file="bhavin_training_print_solution/static/src/demo_file/1.jpg" type="base64" />
             <field name="location">Ahmedabad</field>
             <field name="remark">-</field>
         </record>
@@ -110,7 +130,7 @@
             <field name="object_id" ref="bhavin_training_print_solution.Object2" />
             <field name="cust_id" ref="bhavin_training_print_solution.user1" />
             <field name="provider_id" ref="bhavin_training_print_solution.provider1" />
-            <field name="attachment" file="bhavin_training_print_solution/static/src/demo_file/2.pdf" type="base64" />
+            <field name="image" file="bhavin_training_print_solution/static/src/demo_file/2.pdf" type="base64" />
             <field name="location">Gandhiagar</field>
             <field name="remark">With Spiral</field>
         </record>
@@ -120,8 +140,28 @@
             <field name="object_id" ref="bhavin_training_print_solution.Object1" />
             <field name="cust_id" ref="bhavin_training_print_solution.user2" />
             <field name="provider_id" ref="bhavin_training_print_solution.provider2" />
-            <field name="attachment" file="bhavin_training_print_solution/static/src/demo_file/3.jpg" type="base64" />
+            <field name="image" file="bhavin_training_print_solution/static/src/demo_file/3.jpg" type="base64" />
             <field name="location">Odoo India</field>
+            <field name="remark">-</field>
+        </record>
+
+        <record id="Inquiry3" model="inquiry.inquiry">
+            <field name="name">Print Document</field>
+            <field name="object_id" ref="bhavin_training_print_solution.Object2" />
+            <field name="cust_id" ref="bhavin_training_print_solution.user3" />
+            <field name="provider_id" ref="bhavin_training_print_solution.provider2" />
+            <field name="image" file="bhavin_training_print_solution/static/src/demo_file/4.pdf" type="base64" />
+            <field name="location">Gujarat Vidyapith, Ahmedabad</field>
+            <field name="remark">-</field>
+        </record>
+
+        <record id="Inquiry4" model="inquiry.inquiry">
+            <field name="name">Print Document</field>
+            <field name="object_id" ref="bhavin_training_print_solution.Object2" />
+            <field name="cust_id" ref="bhavin_training_print_solution.user4" />
+            <field name="provider_id" ref="bhavin_training_print_solution.provider2" />
+            <field name="image" file="bhavin_training_print_solution/static/src/demo_file/5.pdf" type="base64" />
+            <field name="location">Gujarat Vidyapith, Ahmedabad</field>
             <field name="remark">-</field>
         </record>
 
@@ -137,12 +177,28 @@
 
         <record id="Order1" model="order.order">
             <field name="inquiry_id" ref="bhavin_training_print_solution.Inquiry1" />
-            <field name="start">2020-01-23 11:26:12</field>
-            <field name="state">progress</field>
+            <field name="start">2020-01-20 16:15:12</field>
+            <field name="end">2020-01-21 16:20:00</field>
+            <field name="price">20</field>
+            <field name="state">complated</field>
         </record>
 
         <record id="Order2" model="order.order">
             <field name="inquiry_id" ref="bhavin_training_print_solution.Inquiry2" />
+            <field name="start">2020-01-23 11:26:12</field>
+            <field name="end">2020-01-24 11:26:12</field>
+            <field name="price">400</field>
+            <field name="state">complated</field>
+        </record>
+
+        <record id="Order3" model="order.order">
+            <field name="inquiry_id" ref="bhavin_training_print_solution.Inquiry3" />
+            <field name="start">2020-01-24 13:56:00</field>
+            <field name="state">progress</field>
+        </record>
+
+        <record id="Order4" model="order.order">
+            <field name="inquiry_id" ref="bhavin_training_print_solution.Inquiry4" />
             <field name="state">pending</field>
         </record>
 

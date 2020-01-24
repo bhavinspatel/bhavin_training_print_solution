@@ -8,7 +8,6 @@
 	'data' : [
 		'security/ir.model.access.csv',
 		'data/data.xml',
-		'report/report.xml',
 		'views/main_template.xml',
 	],
 	'demo' : [

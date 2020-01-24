@@ -1,5 +1,13 @@
 <odoo>
 	<data>
+
+		<report
+			id="action_inquiry_report"
+			model="inquiry.inquiry"
+			string="Print Inquiry"
+			report_type="qweb-pdf"
+			name="bhavin_training_print_solution.inquiry_report"
+			file="bhavin_training_print_solution.inquiry_report"/>
 		
 		<template id="inquiry_report">
 			<t t-call="web.html_container">
@@ -9,7 +17,7 @@
 							<h2>Inquiry Details</h2>
 								<p>Inquiry Name : <span t-field="doc.name" /></p>
 								<p>Object Name : <span t-field="doc.object_id" /></p>
-								<p>Attachment : <img t-attf-src="data:image/*; base64,{{doc.attachment}}" /></p>
+								<p>Attachment : <img t-attf-src="data:image/*;base64,{{doc.image}}" /></p>
 								<p>Provider Name : <span t-field="doc.provider_id" /></p>
 								<p>Delivery Location : <span t-field="doc.location" /></p>
 								<p>Remark : <span t-field="doc.remark" /></p>
@@ -18,15 +26,6 @@
 				</t>
 			</t>
 		</template>
-
-		<report
-			id="action_inquiry_report"
-			model="inquiry.inquiry"
-			string="Print Inquiry"
-			report_type="qweb-pdf"
-			name="bhavin_training_print_solution.inquiry_report"
-			file="bhavin_training_print_solution.inquiry_report"
-			attachment_use="True"/>
 
 	</data>
 </odoo>

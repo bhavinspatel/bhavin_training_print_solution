@@ -151,7 +151,7 @@
 				<tree>
 					<field name="name" />
 					<field name="object_id" />
-					<field name="attachment" />
+					<field name="image" />
 					<field name="cust_id" />
 					<field name="provider_id" />
 					<field name="location" />
@@ -169,7 +169,7 @@
 						<group>
 							<field name="name" />
 							<field name="object_id" />
-							<field name="attachment" />
+							<field name="image" widget="image" />
 							<field name="cust_id" />
 							<field name="provider_id" />
 							<field name="location" />
@@ -191,7 +191,7 @@
 								<div t-attf-class="oe_kanban_content">
 									Inquiry Name : <field name="name" /><br/>
 									Object Name : <field name="object_id" /><br/>
-									Attachment : <field name="attachment" /><br/>
+									image : <field name="image" /><br/>
 									Provider Name : <field name="provider_id" /><br/>
 									Delivery Location : <field name="location" /><br/>
 									Remark : <field name="remark" />
@@ -204,7 +204,7 @@
 		</record>
 
 		<record model="ir.actions.act_window" id="inquiry_action">
-			<field name="name">inquiry</field>
+			<field name="name">Inquiry</field>
 			<field name="res_model">inquiry.inquiry</field>
 			<field name="view_mode">tree,form,kanban</field>
 		</record>
@@ -216,7 +216,7 @@
 				<tree>
 					<field name="inquiry_id" />
 					<field name="object_id" />
-					<field name="attachment" />
+					<field name="image" />
 					<field name="start" />
 					<field name="end" />
 					<field name="price" />
@@ -250,7 +250,7 @@
 							<group>
 								<field name="object_id" />
 								<field name="location" />
-								<field name="attachment" />
+								<field name="image" />
 							</group>
 							<group>
 								<field name="cust_id" />
@@ -287,7 +287,7 @@
 								<div t-attf-class="oe_kanban_content">
 									Inquiry Name : <field name="inquiry_id" /><br/>
 									Object Name : <field name="object_id" /><br/>
-									Attachment : <field name="attachment" /><br/>
+									image : <field name="image" /><br/>
 									Start Printing : <field name="start" /><br/>
 									End Printing : <field name="end" /><br/>
 									Price : <field name="price" /><br/>
@@ -303,7 +303,7 @@
 		</record>
 
 		<record model="ir.ui.view" id="order_graph">
-			<field name="name">order Garph</field>
+			<field name="name">Order Garph</field>
 			<field name="model">order.order</field>
 			<field name="arch" type="xml">
 				<graph>
@@ -313,7 +313,7 @@
 		</record>
 
 		<record model="ir.ui.view" id="order_pivot">
-			<field name="name">order pivot</field>
+			<field name="name">Order Pivot</field>
 			<field name="model">order.order</field>
 			<field name="arch" type="xml">
 				<pivot>
@@ -324,13 +324,13 @@
 		</record>
 
 		<record model="ir.actions.act_window" id="order_action">
-			<field name="name">order</field>
+			<field name="name">Order</field>
 			<field name="res_model">order.order</field>
 			<field name="view_mode">tree,form,kanban,graph,pivot</field>
 		</record>
 
 		<record model="ir.ui.view" id="order_pivot">
-			<field name="name">order pivot</field>
+			<field name="name">Order Dashboard</field>
 			<field name="model">order.order</field>
 			<field name="arch" type="xml">
 				<dashboard>
@@ -352,8 +352,8 @@
 				<menuitem name="Job Workers" id="menuitem_menu_provider" parent="menuitem_menu_registration" action="provider_action" />
 			<menuitem name="Inquiry" id="menuitem_menu_inquiry" parent="menuitem_rootmenu" sequence="2"/>
 				<menuitem name="Inquiry" id="submenu_inquiry" parent="menuitem_menu_inquiry" action="inquiry_action" />
-			<menuitem name="order" id="menuitem_menu_order" parent="menuitem_rootmenu" sequence="3"/>
-				<menuitem name="order" id="submenu_order" parent="menuitem_menu_order" action="order_action" />
+			<menuitem name="Order" id="menuitem_menu_order" parent="menuitem_rootmenu" sequence="3"/>
+				<menuitem name="Order" id="submenu_order" parent="menuitem_menu_order" action="order_action" />
 			<menuitem name="Report" id="menuitem_menu_report" parent="menuitem_rootmenu" sequence="4"/>
 				<menuitem name="Dashboard" id="submenu_dashboard" parent="menuitem_menu_report" action="dashboard_action" />
 			<menuitem name="Configuration" id="menuitem_menu_configuration" parent="menuitem_rootmenu" sequence="5"/>
