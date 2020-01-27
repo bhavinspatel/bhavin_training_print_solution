@@ -346,7 +346,7 @@
 			<field name="view_mode">dashboard,graph,pivot</field>
 		</record>
 
-		<menuitem name="Print Service" id="menuitem_rootmenu" web_icon="bhavin_training_print_solution,static/description/icon1.png" />
+		<menuitem name="Print Service" id="menuitem_rootmenu" web_icon="print_service,static/description/icon1.png" />
 			<menuitem name="Registration" id="menuitem_menu_registration" parent="menuitem_rootmenu" sequence="1"/>
 				<menuitem name="Users" id="menuitem_menu_user" parent="menuitem_menu_registration" action="user_action" />
 				<menuitem name="Job Workers" id="menuitem_menu_provider" parent="menuitem_menu_registration" action="provider_action" />

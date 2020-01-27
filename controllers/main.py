@@ -6,7 +6,7 @@ class PrintSolution(http.Controller):
 	@http.route('/quotation/list/', auth='public', website=True, csrf=False)
 	def quotationList(self):
 		quotations = request.env['quotation.quotation'].search([])
-		return request.render('bhavin_training_print_solution.quotation_list', {'quotations' : quotations})
+		return request.render('print_service.quotation_list', {'quotations' : quotations})
 
 	@http.route('/quotation/delete/<model("quotation.quotation"):quotation>', auth="public", website=True, csrf=False)
 	def deleteQuotation(self, quotation=None):
@@ -18,7 +18,7 @@ class PrintSolution(http.Controller):
 	def createEditQuotationForm(self, quotation=None):
 		if quotation:
 			quotation = request.env['quotation.quotation'].browse([quotation.id])
-		return request.render('bhavin_training_print_solution.create_and_edit_quotation', {'quotation' : quotation})
+		return request.render('print_service.create_and_edit_quotation', {'quotation' : quotation})
 
 	@http.route(['/quotation/data/', '/quotation/data/<int:quotation>'], method="post", auth="public", website=True, csrf=False)
 	def createEditQuotation(self, quotation=None, **post):

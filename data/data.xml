@@ -117,50 +117,50 @@
 
         <record id="Inquiry0" model="inquiry.inquiry">
             <field name="name">Image Printing on Mug</field>
-            <field name="object_id" ref="bhavin_training_print_solution.Object0" />
-            <field name="cust_id" ref="bhavin_training_print_solution.user0" />
-            <field name="provider_id" ref="bhavin_training_print_solution.provider0" />
-            <field name="image" file="bhavin_training_print_solution/static/src/demo_file/1.jpg" type="base64" />
+            <field name="object_id" ref="print_service.Object0" />
+            <field name="cust_id" ref="print_service.user0" />
+            <field name="provider_id" ref="print_service.provider0" />
+            <field name="image" file="print_service/static/src/demo_file/1.jpg" type="base64" />
             <field name="location">Ahmedabad</field>
             <field name="remark">-</field>
         </record>
 
         <record id="Inquiry1" model="inquiry.inquiry">
             <field name="name">Print PDF</field>
-            <field name="object_id" ref="bhavin_training_print_solution.Object2" />
-            <field name="cust_id" ref="bhavin_training_print_solution.user1" />
-            <field name="provider_id" ref="bhavin_training_print_solution.provider1" />
-            <field name="image" file="bhavin_training_print_solution/static/src/demo_file/2.pdf" type="base64" />
+            <field name="object_id" ref="print_service.Object2" />
+            <field name="cust_id" ref="print_service.user1" />
+            <field name="provider_id" ref="print_service.provider1" />
+            <field name="image" file="print_service/static/src/demo_file/2.pdf" type="base64" />
             <field name="location">Gandhiagar</field>
             <field name="remark">With Spiral</field>
         </record>
 
         <record id="Inquiry2" model="inquiry.inquiry">
             <field name="name">Print Image on T-Shirt</field>
-            <field name="object_id" ref="bhavin_training_print_solution.Object1" />
-            <field name="cust_id" ref="bhavin_training_print_solution.user2" />
-            <field name="provider_id" ref="bhavin_training_print_solution.provider2" />
-            <field name="image" file="bhavin_training_print_solution/static/src/demo_file/3.jpg" type="base64" />
+            <field name="object_id" ref="print_service.Object1" />
+            <field name="cust_id" ref="print_service.user2" />
+            <field name="provider_id" ref="print_service.provider2" />
+            <field name="image" file="print_service/static/src/demo_file/3.jpg" type="base64" />
             <field name="location">Odoo India</field>
             <field name="remark">-</field>
         </record>
 
         <record id="Inquiry3" model="inquiry.inquiry">
             <field name="name">Print Document</field>
-            <field name="object_id" ref="bhavin_training_print_solution.Object2" />
-            <field name="cust_id" ref="bhavin_training_print_solution.user3" />
-            <field name="provider_id" ref="bhavin_training_print_solution.provider2" />
-            <field name="image" file="bhavin_training_print_solution/static/src/demo_file/4.pdf" type="base64" />
+            <field name="object_id" ref="print_service.Object2" />
+            <field name="cust_id" ref="print_service.user3" />
+            <field name="provider_id" ref="print_service.provider2" />
+            <field name="image" file="print_service/static/src/demo_file/4.pdf" type="base64" />
             <field name="location">Gujarat Vidyapith, Ahmedabad</field>
             <field name="remark">-</field>
         </record>
 
         <record id="Inquiry4" model="inquiry.inquiry">
             <field name="name">Print Document</field>
-            <field name="object_id" ref="bhavin_training_print_solution.Object2" />
-            <field name="cust_id" ref="bhavin_training_print_solution.user4" />
-            <field name="provider_id" ref="bhavin_training_print_solution.provider2" />
-            <field name="image" file="bhavin_training_print_solution/static/src/demo_file/5.pdf" type="base64" />
+            <field name="object_id" ref="print_service.Object2" />
+            <field name="cust_id" ref="print_service.user4" />
+            <field name="provider_id" ref="print_service.provider2" />
+            <field name="image" file="print_service/static/src/demo_file/5.pdf" type="base64" />
             <field name="location">Gujarat Vidyapith, Ahmedabad</field>
             <field name="remark">-</field>
         </record>
@@ -168,7 +168,7 @@
                 <!-- Order Data -->
 
         <record id="Order0" model="order.order">
-            <field name="inquiry_id" ref="bhavin_training_print_solution.Inquiry0" />
+            <field name="inquiry_id" ref="print_service.Inquiry0" />
             <field name="start">2020-01-23 11:26:12</field>
             <field name="end">2020-01-23 11:26:12</field>
             <field name="price">100</field>
@@ -176,7 +176,7 @@
         </record>
 
         <record id="Order1" model="order.order">
-            <field name="inquiry_id" ref="bhavin_training_print_solution.Inquiry1" />
+            <field name="inquiry_id" ref="print_service.Inquiry1" />
             <field name="start">2020-01-20 16:15:12</field>
             <field name="end">2020-01-21 16:20:00</field>
             <field name="price">20</field>
@@ -184,7 +184,7 @@
         </record>
 
         <record id="Order2" model="order.order">
-            <field name="inquiry_id" ref="bhavin_training_print_solution.Inquiry2" />
+            <field name="inquiry_id" ref="print_service.Inquiry2" />
             <field name="start">2020-01-23 11:26:12</field>
             <field name="end">2020-01-24 11:26:12</field>
             <field name="price">400</field>
@@ -192,13 +192,13 @@
         </record>
 
         <record id="Order3" model="order.order">
-            <field name="inquiry_id" ref="bhavin_training_print_solution.Inquiry3" />
+            <field name="inquiry_id" ref="print_service.Inquiry3" />
             <field name="start">2020-01-24 13:56:00</field>
             <field name="state">progress</field>
         </record>
 
         <record id="Order4" model="order.order">
-            <field name="inquiry_id" ref="bhavin_training_print_solution.Inquiry4" />
+            <field name="inquiry_id" ref="print_service.Inquiry4" />
             <field name="state">pending</field>
         </record>
 

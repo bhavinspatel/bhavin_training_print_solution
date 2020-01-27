@@ -6,8 +6,8 @@
 			model="inquiry.inquiry"
 			string="Print Inquiry"
 			report_type="qweb-pdf"
-			name="bhavin_training_print_solution.inquiry_report"
-			file="bhavin_training_print_solution.inquiry_report"/>
+			name="print_service.inquiry_report"
+			file="print_service.inquiry_report"/>
 		
 		<template id="inquiry_report">
 			<t t-call="web.html_container">
