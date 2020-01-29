@@ -151,7 +151,7 @@
 				<tree>
 					<field name="name" />
 					<field name="object_id" />
-					<field name="image" />
+					<field name="attachment" />
 					<field name="cust_id" />
 					<field name="provider_id" />
 					<field name="location" />
@@ -167,13 +167,17 @@
 				<form name="inquiry Form">
 					<sheet>
 						<group>
-							<field name="name" />
-							<field name="object_id" />
-							<field name="image" widget="image" />
-							<field name="cust_id" />
-							<field name="provider_id" />
-							<field name="location" />
-							<field name="remark" />
+							<group>
+								<field name="name" />
+								<field name="object_id" />
+								<field name="attachment" widget="attachment" />
+								<field name="cust_id" />
+								<field name="provider_id" />
+								<field name="location" />
+								<field name="remark" />
+							</group>
+							<group>
+							</group>
 						</group>
 					</sheet>
 				</form>
@@ -191,7 +195,7 @@
 								<div t-attf-class="oe_kanban_content">
 									Inquiry Name : <field name="name" /><br/>
 									Object Name : <field name="object_id" /><br/>
-									image : <field name="image" /><br/>
+									attachment : <field name="attachment" /><br/>
 									Provider Name : <field name="provider_id" /><br/>
 									Delivery Location : <field name="location" /><br/>
 									Remark : <field name="remark" />
@@ -216,7 +220,7 @@
 				<tree>
 					<field name="inquiry_id" />
 					<field name="object_id" />
-					<field name="image" />
+					<field name="attachment" />
 					<field name="start" />
 					<field name="end" />
 					<field name="price" />
@@ -250,7 +254,7 @@
 							<group>
 								<field name="object_id" />
 								<field name="location" />
-								<field name="image" />
+								<field name="attachment" />
 							</group>
 							<group>
 								<field name="cust_id" />
@@ -287,7 +291,7 @@
 								<div t-attf-class="oe_kanban_content">
 									Inquiry Name : <field name="inquiry_id" /><br/>
 									Object Name : <field name="object_id" /><br/>
-									image : <field name="image" /><br/>
+									Attachment : <field name="attachment" /><br/>
 									Start Printing : <field name="start" /><br/>
 									End Printing : <field name="end" /><br/>
 									Price : <field name="price" /><br/>
@@ -347,16 +351,14 @@
 		</record>
 
 		<menuitem name="Print Service" id="menuitem_rootmenu" web_icon="print_service,static/description/icon1.png" />
-			<menuitem name="Registration" id="menuitem_menu_registration" parent="menuitem_rootmenu" sequence="1"/>
-				<menuitem name="Users" id="menuitem_menu_user" parent="menuitem_menu_registration" action="user_action" />
-				<menuitem name="Job Workers" id="menuitem_menu_provider" parent="menuitem_menu_registration" action="provider_action" />
-			<menuitem name="Inquiry" id="menuitem_menu_inquiry" parent="menuitem_rootmenu" sequence="2"/>
-				<menuitem name="Inquiry" id="submenu_inquiry" parent="menuitem_menu_inquiry" action="inquiry_action" />
-			<menuitem name="Order" id="menuitem_menu_order" parent="menuitem_rootmenu" sequence="3"/>
-				<menuitem name="Order" id="submenu_order" parent="menuitem_menu_order" action="order_action" />
-			<menuitem name="Report" id="menuitem_menu_report" parent="menuitem_rootmenu" sequence="4"/>
-				<menuitem name="Dashboard" id="submenu_dashboard" parent="menuitem_menu_report" action="dashboard_action" />
-			<menuitem name="Configuration" id="menuitem_menu_configuration" parent="menuitem_rootmenu" sequence="5"/>
+			<!-- <menuitem name="Registration" id="menuitem_menu_registration" parent="menuitem_rootmenu" sequence="1"/> -->
+			<menuitem name="Users" id="menuitem_menu_user" parent="menuitem_rootmenu" action="user_action" sequence="1" />
+			<menuitem name="Job Workers" id="menuitem_menu_provider" parent="menuitem_rootmenu" action="provider_action" sequence="2" />
+			<menuitem name="Inquiry" id="menuitem_menu_inquiry" parent="menuitem_rootmenu" action="inquiry_action" sequence="3"/>
+			<menuitem name="Order" id="menuitem_menu_order" parent="menuitem_rootmenu" action="order_action" sequence="4"/>
+			<menuitem name="Reporting" id="menuitem_menu_reporting" parent="menuitem_rootmenu" sequence="5" groups="group_admin" />
+				<menuitem name="Dashboard" id="submenu_dashboard" parent="menuitem_menu_reporting" action="dashboard_action" />
+			<menuitem name="Configuration" id="menuitem_menu_configuration" parent="menuitem_rootmenu" sequence="6" groups="group_admin" />
 				<menuitem name="Object" id="submenu_object" parent="menuitem_menu_configuration" action="object_action" />
 
 	</data>

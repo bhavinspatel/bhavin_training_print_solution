@@ -113,6 +113,16 @@
             <field name="object_type">Paper</field>
         </record>
 
+        <record id="Object3" model="object.object">
+            <field name="name">Banner</field>
+            <field name="object_type">Poly Banner</field>
+        </record>
+
+        <record id="Object4" model="object.object">
+            <field name="name">Poster</field>
+            <field name="object_type">Paper</field>
+        </record>
+
                 <!-- Inquiry Data -->
 
         <record id="Inquiry0" model="inquiry.inquiry">
@@ -120,7 +130,7 @@
             <field name="object_id" ref="print_service.Object0" />
             <field name="cust_id" ref="print_service.user0" />
             <field name="provider_id" ref="print_service.provider0" />
-            <field name="image" file="print_service/static/src/demo_file/1.jpg" type="base64" />
+            <field name="attachment" file="print_service/static/src/demo_file/1.jpg" type="base64" />
             <field name="location">Ahmedabad</field>
             <field name="remark">-</field>
         </record>
@@ -130,7 +140,7 @@
             <field name="object_id" ref="print_service.Object2" />
             <field name="cust_id" ref="print_service.user1" />
             <field name="provider_id" ref="print_service.provider1" />
-            <field name="image" file="print_service/static/src/demo_file/2.pdf" type="base64" />
+            <field name="attachment" file="print_service/static/src/demo_file/2.pdf" type="base64" />
             <field name="location">Gandhiagar</field>
             <field name="remark">With Spiral</field>
         </record>
@@ -140,7 +150,7 @@
             <field name="object_id" ref="print_service.Object1" />
             <field name="cust_id" ref="print_service.user2" />
             <field name="provider_id" ref="print_service.provider2" />
-            <field name="image" file="print_service/static/src/demo_file/3.jpg" type="base64" />
+            <field name="attachment" file="print_service/static/src/demo_file/3.jpg" type="base64" />
             <field name="location">Odoo India</field>
             <field name="remark">-</field>
         </record>
@@ -150,7 +160,7 @@
             <field name="object_id" ref="print_service.Object2" />
             <field name="cust_id" ref="print_service.user3" />
             <field name="provider_id" ref="print_service.provider2" />
-            <field name="image" file="print_service/static/src/demo_file/4.pdf" type="base64" />
+            <field name="attachment" file="print_service/static/src/demo_file/4.pdf" type="base64" />
             <field name="location">Gujarat Vidyapith, Ahmedabad</field>
             <field name="remark">-</field>
         </record>
@@ -160,7 +170,7 @@
             <field name="object_id" ref="print_service.Object2" />
             <field name="cust_id" ref="print_service.user4" />
             <field name="provider_id" ref="print_service.provider2" />
-            <field name="image" file="print_service/static/src/demo_file/5.pdf" type="base64" />
+            <field name="attachment" file="print_service/static/src/demo_file/5.pdf" type="base64" />
             <field name="location">Gujarat Vidyapith, Ahmedabad</field>
             <field name="remark">-</field>
         </record>

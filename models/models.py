@@ -46,7 +46,7 @@ class Inquiry(models.Model):
 	name = fields.Char(string="Inquiry Name", required=True)
 	object_id = fields.Many2one(string="Print Object", comodel_name="object.object", required=True)
 	cust_id = fields.Many2one(string="User Name", comodel_name="user.user", required=True)
-	image = fields.Binary(string="File", attachment=True)
+	attachment = fields.Binary(string="File", attachment=True)
 	provider_id = fields.Many2one(string="Provider Name", comodel_name="provider.provider", required=True)
 	location = fields.Char(string="Delivery Location", required=True)
 	remark = fields.Char(string="Remark")
@@ -65,7 +65,7 @@ class Order(models.Model):
 	object_id = fields.Many2one(string="Print Object", comodel_name="object.object", related="inquiry_id.object_id", store=True)
 	cust_id = fields.Many2one(string="Customer Name", comodel_name="user.user", related="inquiry_id.cust_id")
 	location = fields.Char(string="Delivery Location", related="inquiry_id.location")
-	image = fields.Binary(string="File", related="inquiry_id.image")
+	attachment = fields.Binary(string="File", related="inquiry_id.attachment")
 	provider_id = fields.Many2one(string="Provider Name", related="inquiry_id.provider_id")
 	remark = fields.Char(string="Remark", related="inquiry_id.remark")
 
