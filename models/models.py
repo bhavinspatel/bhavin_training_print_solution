@@ -5,6 +5,7 @@ class User(models.Model):
 	_name = 'user.user'
 	_description = 'User Details'
 
+	company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	name = fields.Char(string="User Name", required=True)
 	address = fields.Char(string="Address", required=True)
 	city = fields.Char(string="City", required=True)
@@ -18,6 +19,7 @@ class Provider(models.Model):
 	_name = 'provider.provider'
 	_description = 'Provider Details'
 
+	company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	owner_name = fields.Char(string="Owner Name", required=True)
 	name = fields.Char(string="Shop Name", required=True)
 	gst_number = fields.Char(string="GST Number", required=True)
@@ -35,6 +37,7 @@ class Object(models.Model):
 	_name = 'object.object'
 	_description = 'Object Details'
 
+	company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	name = fields.Char(string="Object Name", required=True)
 	object_type = fields.Char(string="Object Type", required=True)
 
@@ -43,6 +46,7 @@ class Inquiry(models.Model):
 	_name = 'inquiry.inquiry'
 	_description = 'Inquiry Details'
 
+	company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	name = fields.Char(string="Inquiry Name", required=True)
 	object_id = fields.Many2one(string="Print Object", comodel_name="object.object", required=True)
 	cust_id = fields.Many2one(string="User Name", comodel_name="user.user", required=True)
@@ -57,10 +61,11 @@ class Order(models.Model):
 	_description = 'Order Details'
 	_rec_name = 'inquiry_id'
 
+	company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	start = fields.Datetime(string="Start Printing")
 	end = fields.Datetime(string="End Printing")
 	price = fields.Float(string="Price")
-	state = fields.Selection([('pending', 'Pending'), ('progress', 'In Progress'), ('complated', 'Complated')], string="Status", default="pending")
+	state = fields.Selection([('pending', 'Pending'), ('progress', 'In Progress'), ('complated', 'Complated'), ('dispatched', 'Dispatched'), ('delivered', 'Delivered')], string="Status", default="pending")
 	inquiry_id = fields.Many2one(string="Inquiry Name", comodel_name="inquiry.inquiry", required=True)
 	object_id = fields.Many2one(string="Print Object", comodel_name="object.object", related="inquiry_id.object_id", store=True)
 	cust_id = fields.Many2one(string="Customer Name", comodel_name="user.user", related="inquiry_id.cust_id")
@@ -79,5 +84,13 @@ class Order(models.Model):
 	
 	def action_complated(self):
 		self.write({'state' : 'complated'})
+		return True
+	
+	def action_dispatched(self):
+		self.write({'state' : 'dispatched'})
+		return True
+	
+	def action_delivered(self):
+		self.write({'state' : 'delivered'})
 		return True
 

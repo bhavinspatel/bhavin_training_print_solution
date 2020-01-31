@@ -4,12 +4,14 @@
 	'description' : 'This Application Provide online printing and couriar services',
 	'author' : 'Bhavin Patel',
 	'version' : '0.1',
-	'depends' : ['base', 'web_dashboard'],
+	'depends' : ['base', 'web_dashboard', 'portal'],
 	'data' : [
         'security/security.xml',
 		'security/ir.model.access.csv',
 		'data/data.xml',
 		'views/main_template.xml',
+		'views/customer.xml',
+		'views/registration_template.xml',
 	],
 	'demo' : [
 	],

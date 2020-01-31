@@ -1,30 +1,21 @@
 from odoo import http
 from odoo.http import request
+from odoo.addons.web.controllers.main import Home
 
-class PrintSolution(http.Controller):
+class Home(Home):
 
-	@http.route('/quotation/list/', auth='public', website=True, csrf=False)
-	def quotationList(self):
-		quotations = request.env['quotation.quotation'].search([])
-		return request.render('print_service.quotation_list', {'quotations' : quotations})
+	def _login_redirect(self, uid, redirect=None):
+		if request.session.uid and request.env['res.users'].sudo().browse(request.session.uid).has_group('print_service.group_jobworker'):
+			return '/web/'
+		if request.session.uid and request.env['res.users'].sudo().browse(request.session.uid).has_group('base.group_user'):
+			return '/web/'
+		if  request.session.uid and request.env['res.users'].sudo().browse(request.session.uid).has_group('base.group_portal'):
+			return '/home'
+		return super(PrintService, self)._login_redirect(uid, redirect=redirect)
 
-	@http.route('/quotation/delete/<model("quotation.quotation"):quotation>', auth="public", website=True, csrf=False)
-	def deleteQuotation(self, quotation=None):
-		if quotation:
-			quotation.unlink()
-		return request.redirect('/quotation/list/')
+class PrintService(http.Controller):
 
-	@http.route(['/quotation/edit/<model("quotation.quotation"):quotation>', '/quotation/new'], auth="public", website=True, csrf=False)
-	def createEditQuotationForm(self, quotation=None):
-		if quotation:
-			quotation = request.env['quotation.quotation'].browse([quotation.id])
-		return request.render('print_service.create_and_edit_quotation', {'quotation' : quotation})
-
-	@http.route(['/quotation/data/', '/quotation/data/<int:quotation>'], method="post", auth="public", website=True, csrf=False)
-	def createEditQuotation(self, quotation=None, **post):
-		if post:
-			if quotation:
-				request.env['quotation.quotation'].browse([quotation]).write(post)
-			else:
-				request.env['quotation.quotation'].create(post)
-		return request.redirect('/quotation/list/')
+	@http.route('/home', auth='public', type="http", csrf=False)
+	def index(self, **kw):
+		printers = request.env['provider.provider'].sudo().search([])
+		return request.render("print_service.customer_index", {'printers' : printers})

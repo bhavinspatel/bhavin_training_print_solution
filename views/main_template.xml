@@ -237,10 +237,12 @@
 			<field name="arch" type="xml">
 				<form name="Order Form">
 					<header>
-						<button name="action_pending" states="progress,complated" string="Pending" type="object" class="btn-denger"/>
+						<button name="action_pending" states="progress" string="Pending" type="object" class="btn-danger"/>
 						<button name="action_progress" states="pending,complated" string="In Progress" type="object" class="btn-dark"/>
-						<button name="action_complated" states="pending,progress" string="Complated" type="object" class="btn-success"/>
-						<field name="state" widget="statusbar" statusbar_visible="pending,progress,complated" clickble="True" />
+						<button name="action_complated" states="progress,dispatched" string="Complated" type="object" class="btn-success"/>
+						<button name="action_dispatched" states="complated,delivered" string="Dipatched" type="object" class="btn-dark"/>
+						<button name="action_delivered" states="dispatched" string="Delivered" type="object" class="btn-success"/>
+						<field name="state" widget="statusbar" statusbar_visible="pending,progress,complated,dispatched,delivered" />
 					</header>
 					<sheet>
 						<group>
@@ -351,14 +353,13 @@
 		</record>
 
 		<menuitem name="Print Service" id="menuitem_rootmenu" web_icon="print_service,static/description/icon1.png" />
-			<!-- <menuitem name="Registration" id="menuitem_menu_registration" parent="menuitem_rootmenu" sequence="1"/> -->
 			<menuitem name="Users" id="menuitem_menu_user" parent="menuitem_rootmenu" action="user_action" sequence="1" />
 			<menuitem name="Job Workers" id="menuitem_menu_provider" parent="menuitem_rootmenu" action="provider_action" sequence="2" />
 			<menuitem name="Inquiry" id="menuitem_menu_inquiry" parent="menuitem_rootmenu" action="inquiry_action" sequence="3"/>
 			<menuitem name="Order" id="menuitem_menu_order" parent="menuitem_rootmenu" action="order_action" sequence="4"/>
-			<menuitem name="Reporting" id="menuitem_menu_reporting" parent="menuitem_rootmenu" sequence="5" groups="group_admin" />
+			<menuitem name="Reporting" id="menuitem_menu_reporting" parent="menuitem_rootmenu" sequence="5" />
 				<menuitem name="Dashboard" id="submenu_dashboard" parent="menuitem_menu_reporting" action="dashboard_action" />
-			<menuitem name="Configuration" id="menuitem_menu_configuration" parent="menuitem_rootmenu" sequence="6" groups="group_admin" />
+			<menuitem name="Configuration" id="menuitem_menu_configuration" parent="menuitem_rootmenu" sequence="6" />
 				<menuitem name="Object" id="submenu_object" parent="menuitem_menu_configuration" action="object_action" />
 
 	</data>

@@ -1,0 +1,19 @@
+<odoo>
+	<template id="customer_index">
+		<t t-call="portal.frontend_layout">
+            <div class="container">
+                <div class="col-md-6">
+                    <t t-foreach="printers" t-as="printer">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><t t-esc="printer.name"/></h5>
+                                <p class="card-text"><t t-esc="printer.address"/></p>
+                                <a href="#" class="btn btn-primary">Inquiry</a>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+		</t>
+	</template>
+</odoo>
