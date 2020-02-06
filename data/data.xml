@@ -2,14 +2,40 @@
 	<data>
 				<!-- User Data -->
 
+        <record id="user_partner0" model="res.partner">
+            <field name="name">Bhavin Patel</field>
+            <field name="email">bsp@gmail.com</field>
+        </record>
+
+        <record id="user_res_users0" model="res.users">
+            <field name="partner_id" ref="print_service.user_partner0"></field>
+            <field name="login">bsp@gmail.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_portal')])]"></field>
+        </record>
+
         <record id="user0" model="user.user">
             <field name="name">Bhavin Patel</field>
             <field name="address">At Dharampuri</field>
             <field name="city">Vansda</field>
             <field name="district">Navsari</field>
+            <field name="state">Gujarat</field>
             <field name="pincode">396590</field>
             <field name="mobile">7575051070</field>
             <field name="email">bsp@gmail.com</field>
+            <field name="uid" ref="print_service.user_res_users0"></field>
+        </record>
+
+        <record id="user_partner1" model="res.partner">
+            <field name="name">Bhaumik Pittaliya</field>
+            <field name="email">bhaumik@gmail.com</field>
+        </record>
+
+        <record id="user_res_users1" model="res.users">
+            <field name="partner_id" ref="print_service.user_partner1"></field>
+            <field name="login">bhaumik@gmail.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_portal')])]"></field>
         </record>
 
         <record id="user1" model="user.user">
@@ -17,9 +43,23 @@
             <field name="address">30, Pittalia Society, Vigay nagar</field>
             <field name="city">Ahmedabad</field>
             <field name="district">Ahmedabad</field>
+            <field name="state">Gujarat</field>
             <field name="pincode">380012</field>
             <field name="mobile">9877414596</field>
             <field name="email">bhaumik@gmail.com</field>
+            <field name="uid" ref="print_service.user_res_users1"></field>
+        </record>
+
+        <record id="user_partner2" model="res.partner">
+            <field name="name">Vivek Tiwari</field>
+            <field name="email">vivek@gmail.com</field>
+        </record>
+
+        <record id="user_res_users2" model="res.users">
+            <field name="partner_id" ref="print_service.user_partner2"></field>
+            <field name="login">vivek@gmail.com</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_portal')])]"></field>
         </record>
 
         <record id="user2" model="user.user">
@@ -27,73 +67,121 @@
             <field name="address">52, Tiwari Banglose, Udhana</field>
             <field name="city">Surat</field>
             <field name="district">Surat</field>
+            <field name="state">Gujarat</field>
             <field name="pincode">351852</field>
             <field name="mobile">8524561589</field>
             <field name="email">vivek@gmail.com</field>
+            <field name="uid" ref="print_service.user_res_users2"></field>
         </record>
 
-        <record id="user3" model="user.user">
-            <field name="name">Sahista Pathan</field>
-            <field name="address">Viramgam</field>
-            <field name="city">Viramgam</field>
-            <field name="district">Gandhinagar</field>
-            <field name="pincode">360048</field>
-            <field name="mobile">9569854565</field>
-            <field name="email">sp@gmail.com</field>
+				<!-- Service Provider Data -->
+
+        <record id="service_provider_partner0" model="res.partner">
+            <field name="name">Jigar Sheth</field>
+            <field name="email">ccprint@gmail.com</field>
         </record>
 
-        <record id="user4" model="user.user">
-            <field name="name">Harjindar Kaur</field>
-            <field name="address">Kadi</field>
-            <field name="city">Kadi</field>
-            <field name="district">Gandhinagar</field>
-            <field name="pincode">360048</field>
-            <field name="mobile">9584856255</field>
-            <field name="email">harji@gmail.com</field>
+        <record id="service_provider_company0" model="res.company">
+            <field name="name">Copy Cat Print Shop</field>
+            <field name="partner_id" ref="print_service.service_provider_partner0"></field>
         </record>
 
-				<!-- Provider Data -->
+        <record id="service_provider_res_users0" model="res.users">
+            <field name="partner_id" ref="print_service.service_provider_partner0"></field>
+            <field name="login">ccprint@gmail.com</field>
+            <field name="password">123</field>
+            <field name="company_id" ref="print_service.service_provider_company0"></field>
+            <field name="company_ids" eval="[(4,ref('print_service.service_provider_company0'))]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('print_service.group_service_providers')])]"></field>
+        </record>
 
         <record id="provider0" model="provider.provider">
             <field name="owner_name">Jigar Sheth</field>
-            <field name="name">Sheth Printers</field>
+            <field name="name">Copy Cat Print Shop</field>
+            <field name="shop_image" file="print_service/static/src/demo_file/print_shop1.jpg" type="base64"></field>
             <field name="gst_number">21ABCDE1234F2Z</field>
             <field name="address">At Mahuwa</field>
             <field name="city">Mahuwa</field>
             <field name="district">Bhavnagar</field>
+            <field name="state">Gujarat</field>
             <field name="pincode">352456</field>
             <field name="mobile">7563965218</field>
-            <field name="email">shethprint@gmail.com</field>
+            <field name="email">ccprint@gmail.com</field>
             <field name="open_time">09:00 AM</field>
             <field name="closed_time">08:00 PM</field>
+            <field name="uid" ref="print_service.service_provider_res_users0"></field>
+        </record>
+
+        <record id="service_provider_partner1" model="res.partner">
+            <field name="name">Sushil Gobhaliya</field>
+            <field name="email">sg@gmail.com</field>
+        </record>
+
+        <record id="service_provider_company1" model="res.company">
+            <field name="name">Sign 'n' Graphics</field>
+            <field name="partner_id" ref="print_service.service_provider_partner1"></field>
+        </record>
+
+        <record id="service_provider_res_users1" model="res.users">
+            <field name="partner_id" ref="print_service.service_provider_partner1"></field>
+            <field name="login">sg@gmail.com</field>
+            <field name="password">123</field>
+            <field name="company_id" ref="print_service.service_provider_company1"></field>
+            <field name="company_ids" eval="[(4,ref('print_service.service_provider_company1'))]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('print_service.group_service_providers')])]"></field>
         </record>
 
         <record id="provider1" model="provider.provider">
             <field name="owner_name">Sushil Gobhaliya</field>
-            <field name="name">Gobhaliya Printers</field>
+            <field name="name">Sign 'n' Grahics</field>
+            <field name="shop_image" file="print_service/static/src/demo_file/print_shop2.png" type="base64"></field>
             <field name="gst_number">22ABCDE1234F2Z</field>
             <field name="address">At Dharampur</field>
             <field name="city">Dharampur</field>
             <field name="district">Valsad</field>
+            <field name="state">Gujarat</field>
             <field name="pincode">396485</field>
             <field name="mobile">8529513245</field>
-            <field name="email">gprint@gmail.com</field>
+            <field name="email">sg@gmail.com</field>
             <field name="open_time">10:00 AM</field>
             <field name="closed_time">06:00 PM</field>
+            <field name="uid" ref="print_service.service_provider_res_users1"></field>
+        </record>
+
+        <record id="service_provider_partner2" model="res.partner">
+            <field name="name">Abhijit Gamit</field>
+            <field name="email">cps@gmail.com</field>
+        </record>
+
+        <record id="service_provider_company2" model="res.company">
+            <field name="name">The Copy and Print Shop</field>
+            <field name="partner_id" ref="print_service.service_provider_partner2"></field>
+        </record>
+
+        <record id="service_provider_res_users2" model="res.users">
+            <field name="partner_id" ref="print_service.service_provider_partner2"></field>
+            <field name="login">cps@gmail.com</field>
+            <field name="password">123</field>
+            <field name="company_id" ref="print_service.service_provider_company2"></field>
+            <field name="company_ids" eval="[(4,ref('print_service.service_provider_company2'))]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('print_service.group_service_providers')])]"></field>
         </record>
 
         <record id="provider2" model="provider.provider">
             <field name="owner_name">Abhijit Gamit</field>
             <field name="name">Gamit Printers</field>
+            <field name="shop_image" file="print_service/static/src/demo_file/print_shop3.jpg" type="base64"></field>
             <field name="gst_number">23ABCDE1234F2Z</field>
             <field name="address">At Gandhinagar</field>
             <field name="city">Songhdh</field>
             <field name="district">Tapi</field>
+            <field name="state">Gujarat</field>
             <field name="pincode">351852</field>
             <field name="mobile">9685374196</field>
-            <field name="email">abhiprinter@gmail.com</field>
+            <field name="email">cps@gmail.com</field>
             <field name="open_time">10:00 AM</field>
             <field name="closed_time">07:00 PM</field>
+            <field name="uid" ref="print_service.service_provider_res_users2"></field>
         </record>
 
                 <!-- Object Data -->
@@ -105,7 +193,7 @@
 
         <record id="Object1" model="object.object">
             <field name="name">T-Shirt</field>
-            <field name="object_type">Cloth</field>
+            <field name="object_type">Cloths</field>
         </record>
 
         <record id="Object2" model="object.object">
@@ -133,6 +221,8 @@
             <field name="attachment" file="print_service/static/src/demo_file/1.jpg" type="base64" />
             <field name="location">Ahmedabad</field>
             <field name="remark">-</field>
+            <field name="company_id" ref="print_service.service_provider_company0"></field>
+            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
         <record id="Inquiry1" model="inquiry.inquiry">
@@ -143,6 +233,8 @@
             <field name="attachment" file="print_service/static/src/demo_file/2.pdf" type="base64" />
             <field name="location">Gandhiagar</field>
             <field name="remark">With Spiral</field>
+            <field name="company_id" ref="print_service.service_provider_company1"></field>
+            <field name="create_uid" ref="print_service.user_res_users1"></field>
         </record>
 
         <record id="Inquiry2" model="inquiry.inquiry">
@@ -153,26 +245,8 @@
             <field name="attachment" file="print_service/static/src/demo_file/3.jpg" type="base64" />
             <field name="location">Odoo India</field>
             <field name="remark">-</field>
-        </record>
-
-        <record id="Inquiry3" model="inquiry.inquiry">
-            <field name="name">Print Document</field>
-            <field name="object_id" ref="print_service.Object2" />
-            <field name="cust_id" ref="print_service.user3" />
-            <field name="provider_id" ref="print_service.provider2" />
-            <field name="attachment" file="print_service/static/src/demo_file/4.pdf" type="base64" />
-            <field name="location">Gujarat Vidyapith, Ahmedabad</field>
-            <field name="remark">-</field>
-        </record>
-
-        <record id="Inquiry4" model="inquiry.inquiry">
-            <field name="name">Print Document</field>
-            <field name="object_id" ref="print_service.Object2" />
-            <field name="cust_id" ref="print_service.user4" />
-            <field name="provider_id" ref="print_service.provider2" />
-            <field name="attachment" file="print_service/static/src/demo_file/5.pdf" type="base64" />
-            <field name="location">Gujarat Vidyapith, Ahmedabad</field>
-            <field name="remark">-</field>
+            <field name="company_id" ref="print_service.service_provider_company2"></field>
+            <field name="create_uid" ref="print_service.user_res_users2"></field>
         </record>
 
                 <!-- Order Data -->
@@ -183,6 +257,8 @@
             <field name="end">2020-01-23 11:26:12</field>
             <field name="price">100</field>
             <field name="state">complated</field>
+            <field name="company_id" ref="print_service.service_provider_company0"></field>
+            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
         <record id="Order1" model="order.order">
@@ -191,6 +267,8 @@
             <field name="end">2020-01-21 16:20:00</field>
             <field name="price">20</field>
             <field name="state">complated</field>
+            <field name="company_id" ref="print_service.service_provider_company1"></field>
+            <field name="create_uid" ref="print_service.user_res_users1"></field>
         </record>
 
         <record id="Order2" model="order.order">
@@ -199,17 +277,8 @@
             <field name="end">2020-01-24 11:26:12</field>
             <field name="price">400</field>
             <field name="state">complated</field>
-        </record>
-
-        <record id="Order3" model="order.order">
-            <field name="inquiry_id" ref="print_service.Inquiry3" />
-            <field name="start">2020-01-24 13:56:00</field>
-            <field name="state">progress</field>
-        </record>
-
-        <record id="Order4" model="order.order">
-            <field name="inquiry_id" ref="print_service.Inquiry4" />
-            <field name="state">pending</field>
+            <field name="company_id" ref="print_service.service_provider_company2"></field>
+            <field name="create_uid" ref="print_service.user_res_users2"></field>
         </record>
 
 	</data>
