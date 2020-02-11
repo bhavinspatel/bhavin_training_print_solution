@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
 				<!-- User Data -->
@@ -110,6 +111,7 @@
             <field name="open_time">09:00 AM</field>
             <field name="closed_time">08:00 PM</field>
             <field name="uid" ref="print_service.service_provider_res_users0"></field>
+            <field name="company_id" ref="print_service.service_provider_company0"></field>
         </record>
 
         <record id="service_provider_partner1" model="res.partner">
@@ -146,6 +148,7 @@
             <field name="open_time">10:00 AM</field>
             <field name="closed_time">06:00 PM</field>
             <field name="uid" ref="print_service.service_provider_res_users1"></field>
+            <field name="company_id" ref="print_service.service_provider_company1"></field>
         </record>
 
         <record id="service_provider_partner2" model="res.partner">
@@ -182,6 +185,7 @@
             <field name="open_time">10:00 AM</field>
             <field name="closed_time">07:00 PM</field>
             <field name="uid" ref="print_service.service_provider_res_users2"></field>
+            <field name="company_id" ref="print_service.service_provider_company2"></field>
         </record>
 
                 <!-- Object Data -->
@@ -221,6 +225,7 @@
             <field name="attachment" file="print_service/static/src/demo_file/1.jpg" type="base64" />
             <field name="location">Ahmedabad</field>
             <field name="remark">-</field>
+            <field name="boolean_state">False</field>
             <field name="company_id" ref="print_service.service_provider_company0"></field>
             <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
@@ -233,8 +238,9 @@
             <field name="attachment" file="print_service/static/src/demo_file/2.pdf" type="base64" />
             <field name="location">Gandhiagar</field>
             <field name="remark">With Spiral</field>
+            <field name="boolean_state">False</field>
             <field name="company_id" ref="print_service.service_provider_company1"></field>
-            <field name="create_uid" ref="print_service.user_res_users1"></field>
+            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
         <record id="Inquiry2" model="inquiry.inquiry">
@@ -245,8 +251,48 @@
             <field name="attachment" file="print_service/static/src/demo_file/3.jpg" type="base64" />
             <field name="location">Odoo India</field>
             <field name="remark">-</field>
+            <field name="boolean_state">False</field>
             <field name="company_id" ref="print_service.service_provider_company2"></field>
-            <field name="create_uid" ref="print_service.user_res_users2"></field>
+            <field name="create_uid" ref="print_service.user_res_users0"></field>
+        </record>
+
+        <record id="Inquiry3" model="inquiry.inquiry">
+            <field name="name">Print Logo</field>
+            <field name="object_id" ref="print_service.Object0" />
+            <field name="cust_id" ref="print_service.user0" />
+            <field name="provider_id" ref="print_service.provider0" />
+            <field name="attachment" file="print_service/static/src/demo_file/1.jpg" type="base64" />
+            <field name="location">Ahmedabad</field>
+            <field name="remark">-</field>
+            <field name="boolean_state">True</field>
+            <field name="company_id" ref="print_service.service_provider_company0"></field>
+            <field name="create_uid" ref="print_service.user_res_users0"></field>
+        </record>
+
+        <record id="Inquiry4" model="inquiry.inquiry">
+            <field name="name">Print Book</field>
+            <field name="object_id" ref="print_service.Object2" />
+            <field name="cust_id" ref="print_service.user1" />
+            <field name="provider_id" ref="print_service.provider1" />
+            <field name="attachment" file="print_service/static/src/demo_file/2.pdf" type="base64" />
+            <field name="location">Sector 6, Gandhiagar</field>
+            <field name="remark">With Spiral</field>
+            <field name="boolean_state">True</field>
+            <field name="company_id" ref="print_service.service_provider_company1"></field>
+            <field name="create_uid" ref="print_service.user_res_users0"></field>
+        </record>
+
+        <record id="Inquiry5" model="inquiry.inquiry">
+            <field name="name">Print Logo on T-Shirt</field>
+            <field name="object_id" ref="print_service.Object1" />
+            <field name="cust_id" ref="print_service.user2" />
+            <field name="provider_id" ref="print_service.provider2" />
+            <field name="attachment" file="print_service/static/src/demo_file/3.jpg" type="base64" />
+            <field name="location">Infocity, Gandhinagar</field>
+            <field name="remark">-</field>
+            <field name="boolean_state">True</field>
+            <field name="company_id" ref="print_service.service_provider_company2"></field>
+            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
                 <!-- Order Data -->
@@ -256,7 +302,7 @@
             <field name="start">2020-01-23 11:26:12</field>
             <field name="end">2020-01-23 11:26:12</field>
             <field name="price">100</field>
-            <field name="state">complated</field>
+            <field name="state">delivered</field>
             <field name="company_id" ref="print_service.service_provider_company0"></field>
             <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
@@ -268,17 +314,16 @@
             <field name="price">20</field>
             <field name="state">complated</field>
             <field name="company_id" ref="print_service.service_provider_company1"></field>
-            <field name="create_uid" ref="print_service.user_res_users1"></field>
+            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
         <record id="Order2" model="order.order">
             <field name="inquiry_id" ref="print_service.Inquiry2" />
             <field name="start">2020-01-23 11:26:12</field>
-            <field name="end">2020-01-24 11:26:12</field>
             <field name="price">400</field>
-            <field name="state">complated</field>
+            <field name="state">progress</field>
             <field name="company_id" ref="print_service.service_provider_company2"></field>
-            <field name="create_uid" ref="print_service.user_res_users2"></field>
+            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
 	</data>

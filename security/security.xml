@@ -13,9 +13,9 @@
         <field name="category_id" ref="print_service.module_security"/>
     </record>
 
-    <record id="record_restricted_company_rule" model="ir.rule">
-        <field name="name">Restricted Record: multi-company</field>
-        <field name="model_id" ref="model_inquiry_inquiry"/>
+    <record id="record_restricted_company_for_provider" model="ir.rule">
+        <field name="name">Restricted Record: multi-company for provider</field>
+        <field name="model_id" ref="model_provider_provider"/>
         <field name="groups" eval="[(4, ref('print_service.group_service_providers'))]"/>
         <field name="global" eval="True"/>
         <field name="domain_force">
@@ -23,37 +23,24 @@
         </field>
     </record>
 
-    <record id="print_service_provider" model="ir.rule">
-        <field name="name"> Service Provider </field>
-        <field name="model_id" ref="model_provider_provider"/>
-        <field name="groups" eval="[(4, ref('print_service.group_service_providers'))]"/>
-        <field name="perm_read" eval="1"/>
-        <field name="perm_write" eval="1"/>
-        <field name="perm_create" eval="1"/>
-        <field name="perm_unlink" eval="1"/>
-        <field name="domain_force">[('create_uid', '=', user.id)]</field>
-    </record>
-
-    <record id="print_customer" model="ir.rule">
-        <field name="name"> Customer </field>
-        <field name="model_id" ref="model_provider_provider"/>
-        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
-        <field name="perm_read" eval="1"/>
-        <field name="perm_write" eval="0"/>
-        <field name="perm_create" eval="0"/>
-        <field name="perm_unlink" eval="0"/>
-        <field name="domain_force">[('create_uid', '=',False)]</field>
-    </record>
-
-    <record id="Inquiry_model_restriction_users" model="ir.rule">
-        <field name="name"> Inquiry Model Restricted For Users </field>
+    <record id="record_restricted_company_for_inquiry" model="ir.rule">
+        <field name="name">Restricted Record: multi-company for inquiry</field>
         <field name="model_id" ref="model_inquiry_inquiry"/>
-        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
-        <field name="perm_read" eval="1"/>
-        <field name="perm_write" eval="1"/>
-        <field name="perm_create" eval="1"/>
-        <field name="perm_unlink" eval="1"/>
-        <field name="domain_force">[('create_uid', '=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('print_service.group_service_providers'))]"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">
+            [('company_id', 'in', company_ids), ('boolean_state', '=', True)]
+        </field>
+    </record>
+
+    <record id="record_restricted_company_for_order" model="ir.rule">
+        <field name="name">Restricted Record: multi-company for order</field>
+        <field name="model_id" ref="model_order_order"/>
+        <field name="groups" eval="[(4, ref('print_service.group_service_providers'))]"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">
+            [('company_id', 'in', company_ids)]
+        </field>
     </record>
 
 </odoo>

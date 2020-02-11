@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from odoo import models, fields, api
 
 
@@ -60,6 +61,18 @@ class Inquiry(models.Model):
     provider_id = fields.Many2one(string="Provider Name", comodel_name="provider.provider", required=True)
     location = fields.Char(string="Delivery Location", required=True)
     remark = fields.Char(string="Remark")
+    boolean_state = fields.Boolean(required=True, default=True)
+
+    def inquiry_accept(self):
+        return {
+                    'view_type': 'form',
+                    'view_mode': 'form',
+                    'res_model': 'order.order',
+                    'target': 'current',
+                    'res_id': False,
+                    'type': 'ir.actions.act_window',
+                    'context': {'inquiry_id': self.id}
+                }
 
 
 class Order(models.Model):
@@ -100,3 +113,13 @@ class Order(models.Model):
     def action_delivered(self):
         self.write({'state': 'delivered'})
         return True
+
+    @api.onchange('inquiry_id')
+    def getData(self):
+        if self.env.context.get('inquiry_id'):
+            self.inquiry_id = self.env.context.get('inquiry_id')
+
+    @api.model
+    def create(self, vals):
+        self.env['inquiry.inquiry'].browse([vals.get('inquiry_id')]).write({'boolean_state': False})
+        return super(Order, self).create(vals)

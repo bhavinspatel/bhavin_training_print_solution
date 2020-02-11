@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from odoo import http
 from odoo.http import request
 from odoo.addons.web.controllers.main import Home
@@ -60,8 +61,14 @@ class PrintService(http.Controller):
 
     @http.route('/inquiry', auth='public', type="http", csrf=False)
     def InquiryData(self, **kw):
-        inquires = request.env['inquiry.inquiry'].sudo().search([('create_uid', '=', request.session.uid)])
+        inquires = request.env['inquiry.inquiry'].sudo().search([('create_uid', '=', request.session.uid), ('boolean_state', '=', True)], order='id desc')
         return request.render("print_service.inquiry_data", {'inquires': inquires})
+
+    @http.route('/inquiry/remove/<int:inquiry_id>', auth='public', type="http", csrf=False)
+    def InquiryDataRemove(self, inquiry_id=None, **kw):
+        if inquiry_id:
+            request.env['inquiry.inquiry'].sudo().browse([inquiry_id]).unlink()
+        return http.local_redirect('/inquiry')
 
     @http.route('/inquiry/store/<int:provider_id>', auth='public', method="post", type="http", csrf=False)
     def InquiryStore(self, provider_id=None, **post):
