@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from odoo import models, fields, api
 
 
@@ -61,7 +62,7 @@ class Inquiry(models.Model):
     provider_id = fields.Many2one(string="Provider Name", comodel_name="provider.provider", required=True)
     location = fields.Char(string="Delivery Location", required=True)
     remark = fields.Char(string="Remark")
-    boolean_state = fields.Boolean(required=True, default=True)
+    active = fields.Boolean(default=True)
 
     def inquiry_accept(self):
         return {
@@ -121,5 +122,5 @@ class Order(models.Model):
 
     @api.model
     def create(self, vals):
-        self.env['inquiry.inquiry'].browse([vals.get('inquiry_id')]).write({'boolean_state': False})
+        self.env['inquiry.inquiry'].browse([vals.get('inquiry_id')]).write({'active': False})
         return super(Order, self).create(vals)

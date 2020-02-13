@@ -9,7 +9,7 @@
         </xpath>
     </template>
 
-    <template id="customer_index">
+    <template id="portal_customer_index">
         <t t-call="portal.portal_layout">
             <div class="container">
                 <h1 class="text-center" style="margin-top: 25%;">Welcome to Online Print Service.</h1>
@@ -17,7 +17,7 @@
         </t>
     </template>
 
-    <template id="user_data_form">
+    <template id="portal_user_data_form">
         <t t-call="portal.frontend_layout">
             <div class="container">
                 <div class="col-md-auto">
@@ -58,18 +58,24 @@
                         <input type="submit" class="btn btn-primary" value="Submit" />
                     </form>
                 </div>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                    </button>
+                </div>
             </div>
         </t>
     </template>
 
-    <template id="service_providers_view">
+    <template id="portal_service_providers_view">
         <t t-call="portal.portal_layout">
             <div class="container">
                 <h2 class="text-center p-2">Service Providers</h2>
                 <div class="row col-md-auto p-1">
                     <t t-foreach="providers" t-as="provider">
                         <div class="card p-2 m-2" style="width: 18rem;">
-                            <img t-attf-src="data:image/*; base64,{{provider.shop_image}}" class="card-img-top" height="200px" />
+                            <img t-attf-src="data:image/*;base64,{{provider.shop_image}}" class="card-img-top" height="200px" />
                             <div class="card-body">
                                 <h5 class="card-title"><t t-esc="provider.name"/></h5>
                                 Owner Name : <t t-esc="provider.owner_name"/><br/>
@@ -91,12 +97,12 @@
         </t>
     </template>
 
-    <template id="inquiry_form">
+    <template id="portal_inquiry_form">
         <t t-call="portal.portal_layout">
             <div class="container">
                 <div class="col-md-auto">
                     <h2 class="text-center">Inquiry Form</h2>
-                    <form t-attf-action="/inquiry/store/{{ provider.id }}" method="post">
+                    <form t-attf-action="/inquiry/store/{{ provider.id }}" method="POST">
                         <div class="form-group">
                             <div class="card">
                                 <div class="card-body">
@@ -152,10 +158,11 @@
         </t>
     </template>
 
-    <template id="inquiry_data">
+    <template id="portal_inquiry_data_view">
         <t t-call="portal.portal_layout">
             <div class="container">
                 <h2 class="text-center p-2">Inquiry List</h2>
+                <a href="/providers"><i class="fa fa-plus" style="font-size:25px">New Inquiry</i></a>
                 <table class="table table-hover bg-white">
                     <thead>
                         <tr>
@@ -184,7 +191,7 @@
         </t>
     </template>
 
-    <template id="order_data">
+    <template id="portal_order_data_view">
         <t t-call="portal.portal_layout">
             <div class="container">
                 <h2 class="text-center p-2">Order List</h2>

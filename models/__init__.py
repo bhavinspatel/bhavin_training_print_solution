@@ -1,2 +1,3 @@
-#!/usr/bin/env python3
-from . import models
+# -*- coding: utf-8 -*-
+
+from . import print_service
