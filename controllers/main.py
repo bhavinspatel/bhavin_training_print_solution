@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
 import base64
 
 from odoo import http
@@ -13,8 +13,7 @@ class Home(Home):
         if request.session.uid and request.env['res.users'].sudo().browse(request.session.uid).has_group('print_service.group_jobworker'):
             return '/web/'
         if request.session.uid and request.env['res.users'].sudo().browse(request.session.uid).has_group('base.group_portal'):
-            user = request.env['user.user'].sudo().search([('uid', '=', request.session.uid)])
-            if user:
+            if request.env['user.user'].sudo().search([('uid', '=', request.session.uid)]):
                 return '/home'
             return '/user/data/form'
         return super(Home, self)._login_redirect(uid, redirect=redirect)
@@ -26,13 +25,12 @@ class PrintService(http.Controller):
     def index(self):
         return request.render("print_service.portal_customer_index")
 
-    @http.route('/user/data/form', auth='user', type="http", csrf=False)
-    def UserDataForm(self, **kw):
-        user = request.env['res.users'].sudo().browse([request.session.uid])
-        return request.render("print_service.portal_user_data_form", {'user': user})
+    @http.route('/user/data/form', auth='user', type="http")
+    def user_data_form(self, **kw):
+        return request.render("print_service.portal_user_data_form", {'user': request.env['res.users'].sudo().browse([request.session.uid])})
 
     @http.route('/user/data/create', methods=['POST'], auth='user', type="http", csrf=False)
-    def UserDataCreate(self, **post):
+    def user_data_create(self, **post):
         if post:
             request.env['user.user'].sudo().create({
                 'name': post.get('name'),
@@ -43,51 +41,44 @@ class PrintService(http.Controller):
                 'pincode': post.get('pincode'),
                 'mobile': post.get('mobile'),
                 'email': post.get('email'),
-                'uid': request.session.uid,
+                'uid': request.session.uid
                 })
         return http.local_redirect('/home')
 
-    @http.route('/providers', auth='user', type="http", csrf=False)
-    def ServiceProviderView(self, **kw):
-        providers = request.env['provider.provider'].sudo().search([])
-        return request.render("print_service.portal_service_providers_view", {'providers': providers})
+    @http.route('/providers', auth='user', type="http")
+    def service_provider_view(self, **kw):
+        return request.render("print_service.portal_service_providers_view", {'providers': request.env['provider.provider'].sudo().search([])})
 
-    @http.route('/inquiry/form/<int:provider_id>', auth='user', type="http", csrf=False)
-    def InquiryForm(self, provider_id=None, **kw):
-        if provider_id:
-            provider = request.env['provider.provider'].sudo().search([('id', '=', provider_id)])
-            object_data = request.env['object.object'].sudo().search([])
-        return request.render("print_service.portal_inquiry_form", {'provider': provider, 'object': object_data})
+    @http.route('/inquiry/form/<model("provider.provider"):provider>', auth='user', type="http")
+    def inquiry_form(self, provider=None, **kw):
+        return request.render("print_service.portal_inquiry_form", {'provider': provider, 'object': request.env['object.object'].sudo().search([])})
 
-    @http.route('/inquiry', auth='user', type="http", csrf=False)
-    def InquiryData(self, **kw):
-        inquires = request.env['inquiry.inquiry'].sudo().search([('create_uid', '=', request.session.uid), ('active', '=', True)], order='id desc')
-        return request.render("print_service.portal_inquiry_data_view", {'inquires': inquires})
+    @http.route('/inquiry', auth='user', type="http")
+    def inquiry_data(self, **kw):
+        return request.render("print_service.portal_inquiry_data_view", {'inquires': request.env['inquiry.inquiry'].sudo().search([('create_uid', '=', request.session.uid), ('active', '=', True)], order='id desc')})
 
-    @http.route('/inquiry/remove/<int:inquiry_id>', auth='user', type="http", csrf=False)
-    def InquiryDataRemove(self, inquiry_id=None, **kw):
-        if inquiry_id:
-            request.env['inquiry.inquiry'].sudo().browse([inquiry_id]).unlink()
+    @http.route('/inquiry/remove/<model("inquiry.inquiry"):inquiry>', auth='user', type="http")
+    def inquiry_data_remove(self, inquiry=None, **kw):
+        if inquiry:
+            inquiry.unlink()
         return http.local_redirect('/inquiry')
 
-    @http.route('/inquiry/store/<int:provider_id>', auth='user', methods=['POST'], type="http", csrf=False)
-    def InquiryStore(self, provider_id=None, **post):
+    @http.route('/inquiry/store/<model("provider.provider"):provider>', auth='user', methods=['POST'], type="http", csrf=False)
+    def inquiry_store(self, provider=None, **post):
         if post:
-            file_name = post.get('attachment')
-            file = '/home/bhav/Pictures/' + file_name
+            file = '/home/bhav/Pictures/' + post.get('attachment')
             file = open(file, "rb")
             request.env['inquiry.inquiry'].sudo().create({
                 'name': post.get('name'),
                 'object_id': post.get('object'),
-                'cust_id': request.env['user.user'].sudo().search([('uid', '=', request.session.uid)], limit="1"),
-                'provider_id': provider_id,
+                'cust_id': request.session.uid,
+                'provider_id': provider.id,
                 'attachment': base64.encodestring(file.read()),
                 'location': post.get('delivery_location'),
                 'remark': post.get('remark')
                 })
         return http.local_redirect('/inquiry')
 
-    @http.route('/order', auth='user', type="http", csrf=False)
-    def OrderData(self, **kw):
-        orders = request.env['order.order'].sudo().search([('create_uid', '=', request.session.uid)])
-        return request.render("print_service.portal_order_data_view", {'orders': orders})
+    @http.route('/order', auth='user', type="http")
+    def order_data(self, **kw):
+        return request.render("print_service.portal_order_data_view", {'orders': request.env['order.order'].sudo().search([('create_uid', '=', request.session.uid)])})

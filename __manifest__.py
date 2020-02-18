@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': 'Print Service',
     'summary': 'This is a Print service Application',
@@ -8,9 +10,9 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'data/data.xml',
-        'views/main_template.xml',
-        'views/registration_template.xml',
-        'views/customer_template.xml',
+        'views/web_templates.xml',
+        'views/registration_templates.xml',
+        'views/portal_views.xml',
     ],
     'application': True
 }

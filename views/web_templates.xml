@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<data>
-
-		<record model="ir.ui.view" id="user_list">
+		<record model="ir.ui.view" id="web_print_service_user_list">
 			<field name="name">User List</field>
 			<field name="model">user.user</field>
 			<field name="arch" type="xml">
@@ -18,7 +16,7 @@
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="user_form">
+		<record model="ir.ui.view" id="web_print_service_user_form">
 			<field name="name">User Form</field>
 			<field name="model">user.user</field>
 			<field name="arch" type="xml">
@@ -38,13 +36,13 @@
 			</field>
 		</record>
 
-		<record model="ir.actions.act_window" id="user_action">
+		<record model="ir.actions.act_window" id="web_print_service_user_action">
 			<field name="name">User</field>
 			<field name="res_model">user.user</field>
 			<field name="view_mode">tree,form</field>
 		</record>
 
-		<record model="ir.ui.view" id="service_provider_kanban">
+		<record model="ir.ui.view" id="web_print_service_provider_kanban">
 			<field name="name">Service Provider Kanban</field>
 			<field name="model">provider.provider</field>
 			<field name="arch" type="xml">
@@ -73,7 +71,7 @@
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="service_provider_form">
+		<record model="ir.ui.view" id="web_print_service_provider_form">
 			<field name="name">Service Provider Form</field>
 			<field name="model">provider.provider</field>
 			<field name="arch" type="xml">
@@ -98,13 +96,13 @@
 			</field>
 		</record>
 
-		<record model="ir.actions.act_window" id="service_provider_action">
+		<record model="ir.actions.act_window" id="web_print_service_provider_action">
 			<field name="name">Service Provider</field>
 			<field name="res_model">provider.provider</field>
 			<field name="view_mode">kanban,form</field>
 		</record>
 
-		<record model="ir.ui.view" id="object_list">
+		<record model="ir.ui.view" id="web_print_service_object_list">
 			<field name="name">object List</field>
 			<field name="model">object.object</field>
 			<field name="arch" type="xml">
@@ -115,7 +113,7 @@
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="object_form">
+		<record model="ir.ui.view" id="web_print_service_object_form">
 			<field name="name">object Form</field>
 			<field name="model">object.object</field>
 			<field name="arch" type="xml">
@@ -130,7 +128,7 @@
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="object_kanban">
+		<record model="ir.ui.view" id="web_print_service_object_kanban">
 			<field name="name">object kanban</field>
 			<field name="model">object.object</field>
 			<field name="arch" type="xml">
@@ -149,13 +147,13 @@
 			</field>
 		</record>
 
-		<record model="ir.actions.act_window" id="object_action">
+		<record model="ir.actions.act_window" id="web_print_service_object_action">
 			<field name="name">object</field>
 			<field name="res_model">object.object</field>
 			<field name="view_mode">tree,form,kanban</field>
 		</record>
 
-		<record model="ir.ui.view" id="inquiry_list">
+		<record model="ir.ui.view" id="web_print_service_inquiry_list">
 			<field name="name">inquiry List</field>
 			<field name="model">inquiry.inquiry</field>
 			<field name="arch" type="xml">
@@ -171,7 +169,7 @@
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="inquiry_form_web">
+		<record model="ir.ui.view" id="web_print_service_inquiry_form">
 			<field name="name">inquiry Form</field>
 			<field name="model">inquiry.inquiry</field>
 			<field name="arch" type="xml">
@@ -191,17 +189,12 @@
 								<field name="remark" />
 							</group>
 						</group>
-						<div class="oe_chatter">
-							<field name="message_follower_ids" widget="mail_followers"/>
-							<field name="activity_ids" widget="mail_activity"/>
-							<field name="message_ids" widget="mail_thread"/>
-						</div>
 					</sheet>
 				</form>
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="inquiry_kanban">
+		<record model="ir.ui.view" id="web_print_service_inquiry_kanban">
 			<field name="name">inquiry kanban</field>
 			<field name="model">inquiry.inquiry</field>
 			<field name="arch" type="xml">
@@ -224,7 +217,7 @@
 			</field>
 		</record>
 
-		<record model="ir.actions.act_window" id="inquiry_action">
+		<record model="ir.actions.act_window" id="web_print_service_inquiry_action">
 			<field name="name">Inquiry</field>
 			<field name="res_model">inquiry.inquiry</field>
 			<field name="view_mode">tree,form,kanban</field>
@@ -248,7 +241,7 @@
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="order_form">
+		<record model="ir.ui.view" id="web_print_service_order_form">
 			<field name="name">Order Form</field>
 			<field name="model">order.order</field>
 			<field name="arch" type="xml">
@@ -294,21 +287,16 @@
 							</group>
 							</page>
 						</notebook>
-						<div class="oe_chatter">
-							<field name="message_follower_ids" widget="mail_followers"/>
-							<field name="activity_ids" widget="mail_activity"/>
-							<field name="message_ids" widget="mail_thread"/>
-						</div>
 					</sheet>
 				</form>
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="order_kanban">
+		<record model="ir.ui.view" id="web_print_service_order_kanban">
 			<field name="name">Order kanban</field>
 			<field name="model">order.order</field>
 			<field name="arch" type="xml">
-				<kanban class="o_res_partner_kanban">
+				<kanban default_group_by="state" class="o_res_partner_kanban">
 					<templates>
 						<t t-name="kanban-box">
 							<div t-attf-class="oe_kanban_global_click">
@@ -330,7 +318,7 @@
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="order_graph">
+		<record model="ir.ui.view" id="web_print_service_order_graph">
 			<field name="name">Order Garph</field>
 			<field name="model">order.order</field>
 			<field name="arch" type="xml">
@@ -340,7 +328,7 @@
 			</field>
 		</record>
 
-		<record model="ir.ui.view" id="order_pivot">
+		<record model="ir.ui.view" id="web_print_service_order_pivot">
 			<field name="name">Order Pivot</field>
 			<field name="model">order.order</field>
 			<field name="arch" type="xml">
@@ -351,13 +339,13 @@
 			</field>
 		</record>
 
-		<record model="ir.actions.act_window" id="order_action">
+		<record model="ir.actions.act_window" id="web_print_service_order_action">
 			<field name="name">Order</field>
 			<field name="res_model">order.order</field>
 			<field name="view_mode">tree,form,kanban,graph,pivot</field>
 		</record>
 
-		<record model="ir.ui.view" id="order_pivot">
+		<record model="ir.ui.view" id="web_print_service_order_dashboard">
 			<field name="name">Order Dashboard</field>
 			<field name="model">order.order</field>
 			<field name="arch" type="xml">
@@ -368,21 +356,19 @@
 			</field>
 		</record>
 
-		<record model="ir.actions.act_window" id="dashboard_action">
+		<record model="ir.actions.act_window" id="web_print_service_dashboard_action">
 			<field name="name">Dashboard</field>
 			<field name="res_model">order.order</field>
 			<field name="view_mode">dashboard,graph,pivot</field>
 		</record>
 
-		<menuitem name="Print Service" id="menuitem_rootmenu" web_icon="print_service,static/description/icon1.png" action="dashboard_action"  />
-			<menuitem name="Users" id="menuitem_menu_user" parent="menuitem_rootmenu" action="user_action" sequence="1" />
-			<menuitem name="Service Provider" id="menuitem_menu_provider" parent="menuitem_rootmenu" action="service_provider_action" sequence="2" />
-			<menuitem name="Inquiry" id="menuitem_menu_inquiry" parent="menuitem_rootmenu" action="inquiry_action" sequence="3"/>
-			<menuitem name="Order" id="menuitem_menu_order" parent="menuitem_rootmenu" action="order_action" sequence="4"/>
-			<menuitem name="Reporting" id="menuitem_menu_reporting" parent="menuitem_rootmenu" sequence="5" />
-				<menuitem name="Dashboard" id="submenu_dashboard" parent="menuitem_menu_reporting" action="dashboard_action" />
-			<menuitem name="Configuration" id="menuitem_menu_configuration" parent="menuitem_rootmenu" sequence="6" />
-				<menuitem name="Object" id="submenu_object" parent="menuitem_menu_configuration" action="object_action" />
-
-	</data>
+		<menuitem name="Print Service" id="print_service_rootmenu" web_icon="print_service,static/description/icon1.png" action="web_print_service_dashboard_action"  />
+			<menuitem name="Users" id="print_service_user_menu" parent="print_service_rootmenu" action="web_print_service_user_action" sequence="1" />
+			<menuitem name="Service Provider" id="print_service_provider_menu" parent="print_service_rootmenu" action="web_print_service_provider_action" sequence="2" />
+			<menuitem name="Inquiry" id="print_service_inquiry_menu" parent="print_service_rootmenu" action="web_print_service_inquiry_action" sequence="3"/>
+			<menuitem name="Order" id="print_service_order_menu" parent="print_service_rootmenu" action="web_print_service_order_action" sequence="4"/>
+			<menuitem name="Reporting" id="print_service_reporting_menu" parent="print_service_rootmenu" sequence="5" />
+				<menuitem name="Dashboard" id="print_service_submenu_dashboard_menu" parent="print_service_reporting_menu" action="web_print_service_dashboard_action" />
+			<menuitem name="Configuration" id="print_service_configuration_menu" parent="print_service_rootmenu" sequence="6" />
+				<menuitem name="Object" id="print_service_submenu_object_menu" parent="print_service_configuration_menu" action="web_print_service_object_action" />
 </odoo>

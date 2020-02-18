@@ -12,7 +12,7 @@
             <field name="partner_id" ref="print_service.user_partner0"></field>
             <field name="login">bsp@gmail.com</field>
             <field name="password">123</field>
-            <field name="groups_id" eval="[(6,0,[ref('base.group_portal')])]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_portal')])]"></field>
         </record>
 
         <record id="user0" model="user.user">
@@ -36,7 +36,7 @@
             <field name="partner_id" ref="print_service.user_partner1"></field>
             <field name="login">bhaumik@gmail.com</field>
             <field name="password">123</field>
-            <field name="groups_id" eval="[(6,0,[ref('base.group_portal')])]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_portal')])]"></field>
         </record>
 
         <record id="user1" model="user.user">
@@ -60,7 +60,7 @@
             <field name="partner_id" ref="print_service.user_partner2"></field>
             <field name="login">vivek@gmail.com</field>
             <field name="password">123</field>
-            <field name="groups_id" eval="[(6,0,[ref('base.group_portal')])]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_portal')])]"></field>
         </record>
 
         <record id="user2" model="user.user">
@@ -93,7 +93,7 @@
             <field name="password">123</field>
             <field name="company_id" ref="print_service.service_provider_company0"></field>
             <field name="company_ids" eval="[(4,ref('print_service.service_provider_company0'))]"></field>
-            <field name="groups_id" eval="[(6,0,[ref('print_service.group_service_providers')])]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_service_providers')])]"></field>
         </record>
 
         <record id="provider0" model="provider.provider">
@@ -130,7 +130,7 @@
             <field name="password">123</field>
             <field name="company_id" ref="print_service.service_provider_company1"></field>
             <field name="company_ids" eval="[(4,ref('print_service.service_provider_company1'))]"></field>
-            <field name="groups_id" eval="[(6,0,[ref('print_service.group_service_providers')])]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_service_providers')])]"></field>
         </record>
 
         <record id="provider1" model="provider.provider">
@@ -167,7 +167,7 @@
             <field name="password">123</field>
             <field name="company_id" ref="print_service.service_provider_company2"></field>
             <field name="company_ids" eval="[(4,ref('print_service.service_provider_company2'))]"></field>
-            <field name="groups_id" eval="[(6,0,[ref('print_service.group_service_providers')])]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_service_providers')])]"></field>
         </record>
 
         <record id="provider2" model="provider.provider">

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="portal_my_home_menu" name="Portal Menu" inherit_id="portal.portal_breadcrumbs"  priority="1">
+    <template id="portal_my_home_menu" name="Portal Menu" inherit_id="portal.portal_breadcrumbs" priority="1">
         <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
-            <li style="margin-left: 15px; font-weight: bold;"><a href="/providers"> Service Provider </a></li>
-            <li style="margin-left: 15px; font-weight: bold;"><a href="/inquiry"> Inquiry </a></li>
-            <li style="margin-left: 15px; font-weight: bold;"><a href="/order"> Order </a></li>
+            <li style="margin-left: 15px; font-weight: bold;"><a href="/providers">Service Provider</a></li>
+            <li style="margin-left: 15px; font-weight: bold;"><a href="/inquiry">Inquiry</a></li>
+            <li style="margin-left: 15px; font-weight: bold;"><a href="/order">Order</a></li>
         </xpath>
     </template>
 
@@ -25,37 +25,37 @@
                     <form t-attf-action="/user/data/create" method="post">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" name="name" t-attf-value="{{user.partner_id.name}}" placeholder="Enter Your Name" required="" />
+                            <input type="text" class="form-control" name="name" t-attf-value="{{user.partner_id.name}}" placeholder="Enter Your Name"/>
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <input type="text" class="form-control" name="address" placeholder="Enter Address" required="" />
+                            <input type="text" class="form-control" name="address" placeholder="Enter Address"/>
                         </div>
                         <div class="form-group">
                             <label>City</label>
-                            <input type="text" class="form-control" name="city" placeholder="Enter City" required="" />
+                            <input type="text" class="form-control" name="city" placeholder="Enter City"/>
                         </div>
                         <div class="form-group">
                             <label>District</label>
-                            <input type="text" class="form-control" name="district" placeholder="Enter District" required="" />
+                            <input type="text" class="form-control" name="district" placeholder="Enter District"/>
                         </div>
                         <div class="form-group">
                             <label>State</label>
-                            <input type="text" class="form-control" name="state" placeholder="Enter State" required="" />
+                            <input type="text" class="form-control" name="state" placeholder="Enter State"/>
                         </div>
                         <div class="form-group">
                             <label>Pincode</label>
-                            <input type="text" class="form-control" name="pincode" placeholder="Enter Pincode" required="" />
+                            <input type="text" class="form-control" name="pincode" placeholder="Enter Pincode"/>
                         </div>
                         <div class="form-group">
                             <label>Mobile</label>
-                            <input type="text" class="form-control" name="mobile" placeholder="Enter Mobile" required="" />
+                            <input type="text" class="form-control" name="mobile" placeholder="Enter Mobile"/>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" class="form-control" name="email" t-attf-value="{{user.partner_id.email}}" readonly="" />
+                            <input type="text" class="form-control" name="email" t-attf-value="{{user.partner_id.email}}"/>
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Submit" />
+                        <input type="submit" class="btn btn-primary" value="Submit"/>
                     </form>
                 </div>
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -75,7 +75,7 @@
                 <div class="row col-md-auto p-1">
                     <t t-foreach="providers" t-as="provider">
                         <div class="card p-2 m-2" style="width: 18rem;">
-                            <img t-attf-src="data:image/*;base64,{{provider.shop_image}}" class="card-img-top" height="200px" />
+                            <img t-attf-src="data:image/*;base64,{{provider.shop_image}}" class="card-img-top" height="200px"/>
                             <div class="card-body">
                                 <h5 class="card-title"><t t-esc="provider.name"/></h5>
                                 Owner Name : <t t-esc="provider.owner_name"/><br/>
@@ -88,7 +88,7 @@
                                 Email : <t t-esc="provider.email"/><br/>
                                 Open Time : <t t-esc="provider.open_time"/><br/>
                                 Closed Time : <t t-esc="provider.closed_time"/><br/>
-                                <a t-attf-href="/inquiry/form/{{ provider.id }}" class="btn btn-primary">Inquiry</a>
+                                <a t-attf-href="/inquiry/form/{{slug(provider)}}" class="btn btn-primary">Inquiry</a>
                             </div>
                         </div>
                     </t>
@@ -102,26 +102,26 @@
             <div class="container">
                 <div class="col-md-auto">
                     <h2 class="text-center">Inquiry Form</h2>
-                    <form t-attf-action="/inquiry/store/{{ provider.id }}" method="POST">
+                    <form t-attf-action="/inquiry/store/{{slug(provider)}}" method="POST">
                         <div class="form-group">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="text-center">Provider Details</h4>
                                     <div class="row">
                                         <div style="width: 50%;">
-                                            Service Provider Name : <t t-esc="provider.owner_name" /><br/>
-                                            Shop Name : <t t-esc="provider.name" /><br/>
-                                            GST Number : <t t-esc="provider.gst_number" /><br/>
-                                            Address : <t t-esc="provider.address" /><br/>
-                                            City : <t t-esc="provider.city" /><br/>
-                                            District : <t t-esc="provider.district" />
+                                            Service Provider Name : <t t-esc="provider.owner_name"/><br/>
+                                            Shop Name : <t t-esc="provider.name"/><br/>
+                                            GST Number : <t t-esc="provider.gst_number"/><br/>
+                                            Address : <t t-esc="provider.address"/><br/>
+                                            City : <t t-esc="provider.city"/><br/>
+                                            District : <t t-esc="provider.district"/>
                                         </div>
                                         <div style="width: 50%;">
-                                            Pincode : <t t-esc="provider.pincode" /><br/>
-                                            Mobile : <t t-esc="provider.mobile" /><br/>
-                                            Email : <t t-esc="provider.email" /><br/>
-                                            Open Time : <t t-esc="provider.open_time" /><br/>
-                                            Closed Time : <t t-esc="provider.closed_time" />
+                                            Pincode : <t t-esc="provider.pincode"/><br/>
+                                            Mobile : <t t-esc="provider.mobile"/><br/>
+                                            Email : <t t-esc="provider.email"/><br/>
+                                            Open Time : <t t-esc="provider.open_time"/><br/>
+                                            Closed Time : <t t-esc="provider.closed_time"/>
                                         </div>
                                     </div>
                                 </div>
@@ -129,13 +129,13 @@
                         </div>
                         <div class="form-group">
                             <label>Inquiry Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Enter Inquiry Name" />
+                            <input type="text" class="form-control" name="name" placeholder="Enter Inquiry Name"/>
                         </div>
                         <div class="form-group">
                             <label>Print Object</label>
                             <select class="form-control" name="object">
                                 <t t-foreach="object" t-as="o">
-                                    <option t-attf-value="{{ o.id }}"><t t-esc="o.name"/></option>
+                                    <option t-attf-value="{{o.id}}"><t t-esc="o.name"/></option>
                                 </t>
                             </select>
                         </div>
@@ -145,13 +145,13 @@
                         </div>
                         <div class="form-group">
                             <label>Delivery Location</label>
-                            <input type="text" class="form-control" name="delivery_location" placeholder="Enter Delivery Location" />
+                            <input type="text" class="form-control" name="delivery_location" placeholder="Enter Delivery Location"/>
                         </div>
                         <div class="form-group">
                             <label>Remark</label>
-                            <input type="text" class="form-control" name="remark" placeholder="Enter Remark" />
+                            <input type="text" class="form-control" name="remark" placeholder="Enter Remark"/>
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Submit" />
+                        <input type="submit" class="btn btn-primary" value="Submit"/>
                     </form>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                                 <td> <t t-esc="inquiry.provider_id.name" /></td>
                                 <td> <t t-esc="inquiry.location" /></td>
                                 <td> <t t-esc="inquiry.remark" /></td>
-                                <td> <a t-attf-href="/inquiry/remove/{{ inquiry.id }}"><i class="fa fa-trash" style='font-size:24px'></i></a> </td>
+                                <td> <a t-attf-href="/inquiry/remove/{{slug(inquiry)}}"><i class="fa fa-trash" style='font-size:24px'></i></a> </td>
                             </tr>
                         </t>
                     </tbody>
@@ -211,14 +211,14 @@
                     <tbody>
                         <t t-foreach="orders" t-as="order">
                             <tr>
-                                <td> <t t-esc="order.inquiry_id.name" /></td>
-                                <td> <t t-esc="order.object_id.name" /></td>
-                                <td> <t t-esc="order.inquiry_id.provider_id.name" /></td>
-                                <td> <t t-esc="order.start" /></td>
-                                <td> <t t-esc="order.end" /></td>
-                                <td> <t t-esc="order.price" /></td>
-                                <td> <t t-esc="order.inquiry_id.location" /></td>
-                                <td> <t t-esc="order.state" /></td>
+                                <td> <t t-esc="order.inquiry_id.name"/></td>
+                                <td> <t t-esc="order.object_id.name"/></td>
+                                <td> <t t-esc="order.inquiry_id.provider_id.name"/></td>
+                                <td> <t t-esc="order.start"/></td>
+                                <td> <t t-esc="order.end"/></td>
+                                <td> <t t-esc="order.price"/></td>
+                                <td> <t t-esc="order.inquiry_id.location"/></td>
+                                <td> <t t-esc="order.state"/></td>
                             </tr>
                         </t>
                     </tbody>
@@ -226,4 +226,5 @@
             </div>
         </t>
     </template>
+
 </odoo>

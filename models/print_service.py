@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import models, fields, api
 
 
@@ -51,7 +51,6 @@ class Object(models.Model):
 
 class Inquiry(models.Model):
     _name = 'inquiry.inquiry'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Inquiry Details'
 
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
@@ -66,20 +65,19 @@ class Inquiry(models.Model):
 
     def inquiry_accept(self):
         return {
-                    'view_type': 'form',
-                    'view_mode': 'form',
-                    'res_model': 'order.order',
-                    'target': 'current',
-                    'res_id': False,
-                    'type': 'ir.actions.act_window',
-                    'context': {'inquiry_id': self.id}
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'order.order',
+                'target': 'current',
+                'res_id': False,
+                'type': 'ir.actions.act_window',
+                'context': {'inquiry_id': self.id}
                 }
 
 
 class Order(models.Model):
     _name = 'order.order'
     _description = 'Order Details'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
     _rec_name = 'inquiry_id'
 
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
@@ -97,26 +95,21 @@ class Order(models.Model):
 
     def action_pending(self):
         self.write({'state': 'pending'})
-        return True
 
     def action_progress(self):
         self.write({'state': 'progress'})
-        return True
 
     def action_complated(self):
         self.write({'state': 'complated'})
-        return True
 
     def action_dispatched(self):
         self.write({'state': 'dispatched'})
-        return True
 
     def action_delivered(self):
         self.write({'state': 'delivered'})
-        return True
 
     @api.onchange('inquiry_id')
-    def getData(self):
+    def _onchange_getData(self):
         if self.env.context.get('inquiry_id'):
             self.inquiry_id = self.env.context.get('inquiry_id')
 
