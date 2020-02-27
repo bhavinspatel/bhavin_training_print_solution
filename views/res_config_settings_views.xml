@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.print.service</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="70"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Print Service" string="Print Service" data-key="print_service">
+                    <h2>Paytm</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div class="text">
+                                    <label string="Merchant ID" for="merchant_id"/>
+                                </div>
+                                <field name="merchant_id"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div class="text">
+                                    <label string="Merchant Key" for="merchant_key"/>
+                                </div>
+                                <field name="merchant_key"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            </field>
+        </record>
+
+        <record id="print_service_config_settings_action" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'print_service'}</field>
+        </record>
+
+        <menuitem id="print_service_config_settings_menu_action" name="Settings" parent="print_service_rootmenu"
+            sequence="7" action="print_service_config_settings_action"/>
+</odoo>

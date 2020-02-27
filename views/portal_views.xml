@@ -5,6 +5,7 @@
         <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
             <li style="margin-left: 15px; font-weight: bold;"><a href="/providers">Service Provider</a></li>
             <li style="margin-left: 15px; font-weight: bold;"><a href="/inquiry">Inquiry</a></li>
+            <li style="margin-left: 15px; font-weight: bold;"><a href="/order/payment">Payment</a></li>
             <li style="margin-left: 15px; font-weight: bold;"><a href="/order">Order</a></li>
         </xpath>
     </template>
@@ -216,13 +217,95 @@
                                 <td> <t t-esc="order.inquiry_id.provider_id.name"/></td>
                                 <td> <t t-esc="order.start"/></td>
                                 <td> <t t-esc="order.end"/></td>
-                                <td> <t t-esc="order.price"/></td>
+                                <td> <t t-esc="order.amount"/></td>
                                 <td> <t t-esc="order.inquiry_id.location"/></td>
                                 <td> <t t-esc="order.state"/></td>
                             </tr>
                         </t>
                     </tbody>
                 </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_order_payment">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <h2 class="text-center p-2">Order Payment List</h2>
+                <table class="table table-hover bg-white">
+                    <thead>
+                        <tr>
+                            <th scope="col">Inquiry Name</th>
+                            <th scope="col">Object</th>
+                            <th scope="col">Service Provider</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Payment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="orders" t-as="order">
+                            <tr>
+                                <td><t t-esc="order.inquiry_id.name"/></td>
+                                <td><t t-esc="order.object_id.name"/></td>
+                                <td><t t-esc="order.inquiry_id.provider_id.name"/></td>
+                                <td><t t-esc="order.amount"/></td>
+                                <td><t t-esc="order.inquiry_id.location"/></td>
+                                <td><a t-attf-href="/order/payment/{{slug(order)}}">Pay</a></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_order_payment_form">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <h2 class="text-center p-2">Order Payment Form</h2>
+                    <div class="form-group">
+                        <label>Order ID</label>
+                        <input type="text" class="form-control" name="order_id" id="order_id" t-attf-value="{{order.id}}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Order Name</label>
+                        <input type="text" class="form-control" name="order_name" t-attf-value="{{order.inquiry_id.name}}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Order Amount</label>
+                        <input type="text" class="form-control" name="order_amount" t-attf-value="{{order.amount}}"/>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" id="pay_now">Pay Now</button>
+                        <script src="/print_service/static/src/js/payment_form.js"/>
+                    </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_payment_success">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <div class="alert alert-success my-3 col-md-10" role="alert">
+                    <h4 class="alert-heading">Awesome!</h4>
+                    <p class="mb-0">Aww yeah, your payment successfully done.</p>
+                    <hr/>
+                    <a class="mb-0 btn btn-info" href="/order">Ok</a>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_payment_failed">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <div class="alert alert-danger my-3 col-md-10" role="alert">
+                    <h4 class="alert-heading">Oops! something went wrong</h4>
+                    <p class="mb-0">Oh no, your payment failed.</p>
+                    <hr/>
+                    <a class="mb-0 btn btn-warning" href="/order/payment">Ok</a>
+                </div>
             </div>
         </t>
     </template>

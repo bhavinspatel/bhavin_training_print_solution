@@ -12,10 +12,10 @@
             <field name="partner_id" ref="print_service.user_partner0"></field>
             <field name="login">bsp@gmail.com</field>
             <field name="password">123</field>
-            <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_portal')])]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_portal')])]"></field>
         </record>
 
-        <record id="user0" model="user.user">
+        <record id="user0" model="print.user">
             <field name="name">Bhavin Patel</field>
             <field name="address">At Dharampuri</field>
             <field name="city">Vansda</field>
@@ -36,10 +36,10 @@
             <field name="partner_id" ref="print_service.user_partner1"></field>
             <field name="login">bhaumik@gmail.com</field>
             <field name="password">123</field>
-            <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_portal')])]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_portal')])]"></field>
         </record>
 
-        <record id="user1" model="user.user">
+        <record id="user1" model="print.user">
             <field name="name">Bhaumik Pittaliya</field>
             <field name="address">30, Pittalia Society, Vigay nagar</field>
             <field name="city">Ahmedabad</field>
@@ -60,10 +60,10 @@
             <field name="partner_id" ref="print_service.user_partner2"></field>
             <field name="login">vivek@gmail.com</field>
             <field name="password">123</field>
-            <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_portal')])]"></field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_portal')])]"></field>
         </record>
 
-        <record id="user2" model="user.user">
+        <record id="user2" model="print.user">
             <field name="name">Vivek Tiwari</field>
             <field name="address">52, Tiwari Banglose, Udhana</field>
             <field name="city">Surat</field>
@@ -96,7 +96,7 @@
             <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_service_providers')])]"></field>
         </record>
 
-        <record id="provider0" model="provider.provider">
+        <record id="provider0" model="print.service.provider">
             <field name="owner_name">Jigar Sheth</field>
             <field name="name">Copy Cat Print Shop</field>
             <field name="shop_image" file="print_service/static/src/demo_file/print_shop1.jpg" type="base64"></field>
@@ -133,7 +133,7 @@
             <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_service_providers')])]"></field>
         </record>
 
-        <record id="provider1" model="provider.provider">
+        <record id="provider1" model="print.service.provider">
             <field name="owner_name">Sushil Gobhaliya</field>
             <field name="name">Sign 'n' Grahics</field>
             <field name="shop_image" file="print_service/static/src/demo_file/print_shop2.png" type="base64"></field>
@@ -170,7 +170,7 @@
             <field name="groups_id" eval="[(6,0,[ref('print_service.print_service_group_service_providers')])]"></field>
         </record>
 
-        <record id="provider2" model="provider.provider">
+        <record id="provider2" model="print.service.provider">
             <field name="owner_name">Abhijit Gamit</field>
             <field name="name">Gamit Printers</field>
             <field name="shop_image" file="print_service/static/src/demo_file/print_shop3.jpg" type="base64"></field>
@@ -190,34 +190,34 @@
 
                 <!-- Object Data -->
 
-        <record id="Object0" model="object.object">
+        <record id="Object0" model="print.object">
             <field name="name">Mug</field>
             <field name="object_type">Ciramic</field>
         </record>
 
-        <record id="Object1" model="object.object">
+        <record id="Object1" model="print.object">
             <field name="name">T-Shirt</field>
             <field name="object_type">Cloths</field>
         </record>
 
-        <record id="Object2" model="object.object">
+        <record id="Object2" model="print.object">
             <field name="name">A4 Size Paper</field>
             <field name="object_type">Paper</field>
         </record>
 
-        <record id="Object3" model="object.object">
+        <record id="Object3" model="print.object">
             <field name="name">Banner</field>
             <field name="object_type">Poly Banner</field>
         </record>
 
-        <record id="Object4" model="object.object">
+        <record id="Object4" model="print.object">
             <field name="name">Poster</field>
             <field name="object_type">Paper</field>
         </record>
 
                 <!-- Inquiry Data -->
 
-        <record id="Inquiry0" model="inquiry.inquiry">
+        <record id="Inquiry0" model="print.inquiry">
             <field name="name">Image Printing on Mug</field>
             <field name="object_id" ref="print_service.Object0" />
             <field name="cust_id" ref="print_service.user0" />
@@ -227,10 +227,9 @@
             <field name="remark">-</field>
             <field name="active">False</field>
             <field name="company_id" ref="print_service.service_provider_company0"></field>
-            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
-        <record id="Inquiry1" model="inquiry.inquiry">
+        <record id="Inquiry1" model="print.inquiry">
             <field name="name">Print PDF</field>
             <field name="object_id" ref="print_service.Object2" />
             <field name="cust_id" ref="print_service.user1" />
@@ -240,10 +239,9 @@
             <field name="remark">With Spiral</field>
             <field name="active">False</field>
             <field name="company_id" ref="print_service.service_provider_company1"></field>
-            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
-        <record id="Inquiry2" model="inquiry.inquiry">
+        <record id="Inquiry2" model="print.inquiry">
             <field name="name">Print Image on T-Shirt</field>
             <field name="object_id" ref="print_service.Object1" />
             <field name="cust_id" ref="print_service.user2" />
@@ -253,10 +251,9 @@
             <field name="remark">-</field>
             <field name="active">False</field>
             <field name="company_id" ref="print_service.service_provider_company2"></field>
-            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
-        <record id="Inquiry3" model="inquiry.inquiry">
+        <record id="Inquiry3" model="print.inquiry">
             <field name="name">Print Logo</field>
             <field name="object_id" ref="print_service.Object0" />
             <field name="cust_id" ref="print_service.user0" />
@@ -266,10 +263,9 @@
             <field name="remark">-</field>
             <field name="active">True</field>
             <field name="company_id" ref="print_service.service_provider_company0"></field>
-            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
-        <record id="Inquiry4" model="inquiry.inquiry">
+        <record id="Inquiry4" model="print.inquiry">
             <field name="name">Print Book</field>
             <field name="object_id" ref="print_service.Object2" />
             <field name="cust_id" ref="print_service.user1" />
@@ -279,10 +275,9 @@
             <field name="remark">With Spiral</field>
             <field name="active">True</field>
             <field name="company_id" ref="print_service.service_provider_company1"></field>
-            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
-        <record id="Inquiry5" model="inquiry.inquiry">
+        <record id="Inquiry5" model="print.inquiry">
             <field name="name">Print Logo on T-Shirt</field>
             <field name="object_id" ref="print_service.Object1" />
             <field name="cust_id" ref="print_service.user2" />
@@ -292,38 +287,34 @@
             <field name="remark">-</field>
             <field name="active">True</field>
             <field name="company_id" ref="print_service.service_provider_company2"></field>
-            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
                 <!-- Order Data -->
 
-        <record id="Order0" model="order.order">
+        <record id="Order0" model="print.order">
             <field name="inquiry_id" ref="print_service.Inquiry0" />
             <field name="start">2020-01-23 11:26:12</field>
             <field name="end">2020-01-23 11:26:12</field>
-            <field name="price">100</field>
+            <field name="amount">100</field>
             <field name="state">delivered</field>
             <field name="company_id" ref="print_service.service_provider_company0"></field>
-            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
-        <record id="Order1" model="order.order">
+        <record id="Order1" model="print.order">
             <field name="inquiry_id" ref="print_service.Inquiry1" />
             <field name="start">2020-01-20 16:15:12</field>
             <field name="end">2020-01-21 16:20:00</field>
-            <field name="price">20</field>
+            <field name="amount">20</field>
             <field name="state">complated</field>
             <field name="company_id" ref="print_service.service_provider_company1"></field>
-            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
-        <record id="Order2" model="order.order">
+        <record id="Order2" model="print.order">
             <field name="inquiry_id" ref="print_service.Inquiry2" />
             <field name="start">2020-01-23 11:26:12</field>
-            <field name="price">400</field>
+            <field name="amount">400</field>
             <field name="state">progress</field>
             <field name="company_id" ref="print_service.service_provider_company2"></field>
-            <field name="create_uid" ref="print_service.user_res_users0"></field>
         </record>
 
 	</data>

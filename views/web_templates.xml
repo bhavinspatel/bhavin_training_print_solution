@@ -2,34 +2,34 @@
 <odoo>
 		<record model="ir.ui.view" id="web_print_service_user_list">
 			<field name="name">User List</field>
-			<field name="model">user.user</field>
+			<field name="model">print.user</field>
 			<field name="arch" type="xml">
 				<tree>
-					<field name="name" />
-					<field name="email" />
-					<field name="mobile" />
-					<field name="address" />
-					<field name="city" />
-					<field name="district" />
-					<field name="pincode" />
+					<field name="name"/>
+					<field name="email"/>
+					<field name="mobile"/>
+					<field name="address"/>
+					<field name="city"/>
+					<field name="district"/>
+					<field name="pincode"/>
 				</tree>
 			</field>
 		</record>
 
 		<record model="ir.ui.view" id="web_print_service_user_form">
 			<field name="name">User Form</field>
-			<field name="model">user.user</field>
+			<field name="model">print.user</field>
 			<field name="arch" type="xml">
 				<form name="User Form">
 					<sheet>
 						<group>
-							<field name="name" />
-							<field name="email" />
-							<field name="mobile" />
-							<field name="address" />
-							<field name="city" />
-							<field name="district" />
-							<field name="pincode" />
+							<field name="name"/>
+							<field name="email"/>
+							<field name="mobile"/>
+							<field name="address"/>
+							<field name="city"/>
+							<field name="district"/>
+							<field name="pincode"/>
 						</group>
 					</sheet>
 				</form>
@@ -38,13 +38,13 @@
 
 		<record model="ir.actions.act_window" id="web_print_service_user_action">
 			<field name="name">User</field>
-			<field name="res_model">user.user</field>
+			<field name="res_model">print.user</field>
 			<field name="view_mode">tree,form</field>
 		</record>
 
 		<record model="ir.ui.view" id="web_print_service_provider_kanban">
 			<field name="name">Service Provider Kanban</field>
-			<field name="model">provider.provider</field>
+			<field name="model">print.service.provider</field>
 			<field name="arch" type="xml">
 				<kanban class="o_res_partner_kanban">
 					<templates>
@@ -52,17 +52,17 @@
 							<div t-attf-class="oe_kanban_global_click">
 								<div t-attf-class="oe_kanban_content">
 									<field name="shop_image" widget="image" height="250px" width="250px" /><br/>
-									Shop Name : <field name="name" /><br/>
-									Name : <field name="owner_name" /><br/>
-									GST Number : <field name="gst_number" /><br/>
-									Email : <field name="email" /><br/>
-									Mobile : <field name="mobile" /><br/>
-									Address : <field name="address" /><br/>
-									City : <field name="city" /><br/>
-									District : <field name="district" /><br/>
-									Pincode : <field name="pincode" /><br/>
-									Open Time : <field name="open_time" /><br/>
-									Closed Time : <field name="closed_time" />
+									Shop Name : <field name="name"/><br/>
+									Name : <field name="owner_name"/><br/>
+									GST Number : <field name="gst_number"/><br/>
+									Email : <field name="email"/><br/>
+									Mobile : <field name="mobile"/><br/>
+									Address : <field name="address"/><br/>
+									City : <field name="city"/><br/>
+									District : <field name="district"/><br/>
+									Pincode : <field name="pincode"/><br/>
+									Open Time : <field name="open_time"/><br/>
+									Closed Time : <field name="closed_time"/>
 								</div>
 							</div>
 						</t>
@@ -73,23 +73,23 @@
 
 		<record model="ir.ui.view" id="web_print_service_provider_form">
 			<field name="name">Service Provider Form</field>
-			<field name="model">provider.provider</field>
+			<field name="model">print.service.provider</field>
 			<field name="arch" type="xml">
 				<form name="Provider Form">
 					<sheet>
 						<group>
-							<field name="owner_name" />
-							<field name="name" />
-							<field name="shop_image" widget="image" />
-							<field name="gst_number" />
-							<field name="email" />
-							<field name="mobile" />
-							<field name="address" />
-							<field name="city" />
-							<field name="district" />
-							<field name="pincode" />
-							<field name="open_time" />
-							<field name="closed_time" />
+							<field name="owner_name"/>
+							<field name="name"/>
+							<field name="shop_image" widget="image"/>
+							<field name="gst_number"/>
+							<field name="email"/>
+							<field name="mobile"/>
+							<field name="address"/>
+							<field name="city"/>
+							<field name="district"/>
+							<field name="pincode"/>
+							<field name="open_time"/>
+							<field name="closed_time"/>
 						</group>
 					</sheet>
 				</form>
@@ -98,30 +98,30 @@
 
 		<record model="ir.actions.act_window" id="web_print_service_provider_action">
 			<field name="name">Service Provider</field>
-			<field name="res_model">provider.provider</field>
+			<field name="res_model">print.service.provider</field>
 			<field name="view_mode">kanban,form</field>
 		</record>
 
 		<record model="ir.ui.view" id="web_print_service_object_list">
 			<field name="name">object List</field>
-			<field name="model">object.object</field>
+			<field name="model">print.object</field>
 			<field name="arch" type="xml">
 				<tree>
-					<field name="name" />
-					<field name="object_type" />
+					<field name="name"/>
+					<field name="object_type"/>
 				</tree>
 			</field>
 		</record>
 
 		<record model="ir.ui.view" id="web_print_service_object_form">
 			<field name="name">object Form</field>
-			<field name="model">object.object</field>
+			<field name="model">print.object</field>
 			<field name="arch" type="xml">
 				<form name="object Form">
 					<sheet>
 						<group>
-							<field name="name" />
-							<field name="object_type" />
+							<field name="name"/>
+							<field name="object_type"/>
 						</group>
 					</sheet>
 				</form>
@@ -130,15 +130,15 @@
 
 		<record model="ir.ui.view" id="web_print_service_object_kanban">
 			<field name="name">object kanban</field>
-			<field name="model">object.object</field>
+			<field name="model">print.object</field>
 			<field name="arch" type="xml">
 				<kanban class="o_res_partner_kanban">
 					<templates>
 						<t t-name="kanban-box">
 							<div t-attf-class="oe_kanban_global_click">
 								<div t-attf-class="oe_kanban_content">
-									Object Name : <field name="name" /><br/>
-									Object Type : <field name="object_type" />
+									Object Name : <field name="name"/><br/>
+									Object Type : <field name="object_type"/>
 								</div>
 							</div>
 						</t>
@@ -149,13 +149,13 @@
 
 		<record model="ir.actions.act_window" id="web_print_service_object_action">
 			<field name="name">object</field>
-			<field name="res_model">object.object</field>
+			<field name="res_model">print.object</field>
 			<field name="view_mode">tree,form,kanban</field>
 		</record>
 
 		<record model="ir.ui.view" id="web_print_service_inquiry_list">
 			<field name="name">inquiry List</field>
-			<field name="model">inquiry.inquiry</field>
+			<field name="model">print.inquiry</field>
 			<field name="arch" type="xml">
 				<tree>
 					<field name="name" />
@@ -171,7 +171,7 @@
 
 		<record model="ir.ui.view" id="web_print_service_inquiry_form">
 			<field name="name">inquiry Form</field>
-			<field name="model">inquiry.inquiry</field>
+			<field name="model">print.inquiry</field>
 			<field name="arch" type="xml">
 				<form name="inquiry Form">
 					<sheet>
@@ -180,13 +180,13 @@
 						</div>
 						<group>
 							<group>
-								<field name="name" />
-								<field name="object_id" />
-								<field name="attachment" widget="attachment" />
-								<field name="cust_id" />
-								<field name="provider_id" />
-								<field name="location" />
-								<field name="remark" />
+								<field name="name"/>
+								<field name="object_id"/>
+								<field name="attachment"/>
+								<field name="cust_id"/>
+								<field name="provider_id"/>
+								<field name="location"/>
+								<field name="remark"/>
 							</group>
 						</group>
 					</sheet>
@@ -196,7 +196,7 @@
 
 		<record model="ir.ui.view" id="web_print_service_inquiry_kanban">
 			<field name="name">inquiry kanban</field>
-			<field name="model">inquiry.inquiry</field>
+			<field name="model">print.inquiry</field>
 			<field name="arch" type="xml">
 				<kanban class="o_res_partner_kanban">
 					<templates>
@@ -219,13 +219,13 @@
 
 		<record model="ir.actions.act_window" id="web_print_service_inquiry_action">
 			<field name="name">Inquiry</field>
-			<field name="res_model">inquiry.inquiry</field>
+			<field name="res_model">print.inquiry</field>
 			<field name="view_mode">tree,form,kanban</field>
 		</record>
 
 		<record model="ir.ui.view" id="order_list">
 			<field name="name">Order List</field>
-			<field name="model">order.order</field>
+			<field name="model">print.order</field>
 			<field name="arch" type="xml">
 				<tree>
 					<field name="inquiry_id" />
@@ -233,7 +233,7 @@
 					<field name="attachment" />
 					<field name="start" />
 					<field name="end" />
-					<field name="price" />
+					<field name="amount" />
 					<field name="cust_id" />
 					<field name="location" />
 					<field name="state" />
@@ -243,7 +243,7 @@
 
 		<record model="ir.ui.view" id="web_print_service_order_form">
 			<field name="name">Order Form</field>
-			<field name="model">order.order</field>
+			<field name="model">print.order</field>
 			<field name="arch" type="xml">
 				<form name="Order Form">
 					<header>
@@ -280,7 +280,7 @@
 								<group>
 									<field name="start" />
 									<field name="end" />
-									<field name="price" />
+									<field name="amount" />
 								</group>
 								<group>
 								</group>
@@ -294,7 +294,7 @@
 
 		<record model="ir.ui.view" id="web_print_service_order_kanban">
 			<field name="name">Order kanban</field>
-			<field name="model">order.order</field>
+			<field name="model">print.order</field>
 			<field name="arch" type="xml">
 				<kanban default_group_by="state" class="o_res_partner_kanban">
 					<templates>
@@ -306,7 +306,7 @@
 									Attachment : <field name="attachment" /><br/>
 									Start Printing : <field name="start" /><br/>
 									End Printing : <field name="end" /><br/>
-									Price : <field name="price" /><br/>
+									Amount : <field name="amount" /><br/>
 									Customer Name : <field name="cust_id" /><br/>
 									Delivery Location : <field name="location" /><br/>
 									Status : <field name="state" />
@@ -320,7 +320,7 @@
 
 		<record model="ir.ui.view" id="web_print_service_order_graph">
 			<field name="name">Order Garph</field>
-			<field name="model">order.order</field>
+			<field name="model">print.order</field>
 			<field name="arch" type="xml">
 				<graph>
 					<field name="state" />
@@ -330,7 +330,7 @@
 
 		<record model="ir.ui.view" id="web_print_service_order_pivot">
 			<field name="name">Order Pivot</field>
-			<field name="model">order.order</field>
+			<field name="model">print.order</field>
 			<field name="arch" type="xml">
 				<pivot>
 					<field name="object_id" type="row" />
@@ -341,13 +341,13 @@
 
 		<record model="ir.actions.act_window" id="web_print_service_order_action">
 			<field name="name">Order</field>
-			<field name="res_model">order.order</field>
+			<field name="res_model">print.order</field>
 			<field name="view_mode">tree,form,kanban,graph,pivot</field>
 		</record>
 
 		<record model="ir.ui.view" id="web_print_service_order_dashboard">
 			<field name="name">Order Dashboard</field>
-			<field name="model">order.order</field>
+			<field name="model">print.order</field>
 			<field name="arch" type="xml">
 				<dashboard>
 					<view type="pivot" ref="order_pivot" />
@@ -358,7 +358,7 @@
 
 		<record model="ir.actions.act_window" id="web_print_service_dashboard_action">
 			<field name="name">Dashboard</field>
-			<field name="res_model">order.order</field>
+			<field name="res_model">print.order</field>
 			<field name="view_mode">dashboard,graph,pivot</field>
 		</record>
 

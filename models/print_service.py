@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
+import uuid
 from odoo import models, fields, api
 
 
-class User(models.Model):
-    _name = 'user.user'
-    _description = 'User Details'
+class PrintUser(models.Model):
+    _name = 'print.user'
+    _description = 'Print User Details'
 
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
     name = fields.Char(string="User Name", required=True)
@@ -19,9 +20,9 @@ class User(models.Model):
     uid = fields.Many2one(string="User ID", comodel_name="res.users")
 
 
-class Provider(models.Model):
-    _name = 'provider.provider'
-    _description = 'Provider Details'
+class PrintProvider(models.Model):
+    _name = 'print.service.provider'
+    _description = 'Print Provider Details'
 
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
     owner_name = fields.Char(string="Owner Name", required=True)
@@ -40,25 +41,25 @@ class Provider(models.Model):
     uid = fields.Many2one(string="User ID", comodel_name="res.users")
 
 
-class Object(models.Model):
-    _name = 'object.object'
-    _description = 'Object Details'
+class PrintObject(models.Model):
+    _name = 'print.object'
+    _description = 'Print Object Details'
 
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
     name = fields.Char(string="Object Name", required=True)
     object_type = fields.Char(string="Object Type", required=True)
 
 
-class Inquiry(models.Model):
-    _name = 'inquiry.inquiry'
-    _description = 'Inquiry Details'
+class PrintInquiry(models.Model):
+    _name = 'print.inquiry'
+    _description = 'Print Inquiry Details'
 
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
     name = fields.Char(string="Inquiry Name", required=True)
-    object_id = fields.Many2one(string="Print Object", comodel_name="object.object", required=True)
-    cust_id = fields.Many2one(string="User Name", comodel_name="user.user", required=True)
+    object_id = fields.Many2one(string="Print Object", comodel_name="print.object", required=True)
+    cust_id = fields.Many2one(string="User Name", comodel_name="print.user", required=True)
     attachment = fields.Binary(string="File", attachment=True)
-    provider_id = fields.Many2one(string="Provider Name", comodel_name="provider.provider", required=True)
+    provider_id = fields.Many2one(string="Provider Name", comodel_name="print.service.provider", required=True)
     location = fields.Char(string="Delivery Location", required=True)
     remark = fields.Char(string="Remark")
     active = fields.Boolean(default=True)
@@ -67,7 +68,7 @@ class Inquiry(models.Model):
         return {
                 'view_type': 'form',
                 'view_mode': 'form',
-                'res_model': 'order.order',
+                'res_model': 'print.order',
                 'target': 'current',
                 'res_id': False,
                 'type': 'ir.actions.act_window',
@@ -75,23 +76,32 @@ class Inquiry(models.Model):
                 }
 
 
-class Order(models.Model):
-    _name = 'order.order'
-    _description = 'Order Details'
+class PrintOrder(models.Model):
+    _name = 'print.order'
+    _description = 'Print Order Details'
     _rec_name = 'inquiry_id'
+
+    def _default_order_reference(self):
+        return str(uuid.uuid4())
 
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
     start = fields.Datetime(string="Start Printing")
     end = fields.Datetime(string="End Printing")
-    price = fields.Float(string="Price")
-    state = fields.Selection([('pending', 'Pending'), ('progress', 'In Progress'), ('complated', 'Complated'), ('dispatched', 'Dispatched'), ('delivered', 'Delivered')], string="Status", default="pending")
-    inquiry_id = fields.Many2one(string="Inquiry Name", comodel_name="inquiry.inquiry", required=True)
-    object_id = fields.Many2one(string="Print Object", comodel_name="object.object", related="inquiry_id.object_id", store=True)
-    cust_id = fields.Many2one(string="Customer Name", comodel_name="user.user", related="inquiry_id.cust_id")
+    amount = fields.Float(string="Amount")
+    state = fields.Selection([('pending', 'Pending'), ('progress', 'In Progress'), ('complated', 'Complated'), ('dispatched', 'Dispatched'),
+                            ('delivered', 'Delivered')], string="Status", default=None)
+    inquiry_id = fields.Many2one(string="Inquiry Name", comodel_name="print.inquiry", required=True)
+    object_id = fields.Many2one(string="Print Object", comodel_name="print.object", related="inquiry_id.object_id", store=True)
+    cust_id = fields.Many2one(string="Customer Name", comodel_name="print.user", related="inquiry_id.cust_id", store=True)
     location = fields.Char(string="Delivery Location", related="inquiry_id.location")
     attachment = fields.Binary(string="File", related="inquiry_id.attachment")
     provider_id = fields.Many2one(string="Provider Name", related="inquiry_id.provider_id")
     remark = fields.Char(string="Remark", related="inquiry_id.remark")
+    order_reference = fields.Char(default=_default_order_reference, store=True)
+    acquirer_ref = fields.Char(string="Transaction ID")
+    payment_date = fields.Datetime(string="Payment Date")
+    payment_status = fields.Selection([('pending', 'Pending'), ('failed', 'Failed'), ('success', 'Success')], string="Payment Date", default='pending')
+    active = fields.Boolean(default=True)
 
     def action_pending(self):
         self.write({'state': 'pending'})
@@ -115,5 +125,5 @@ class Order(models.Model):
 
     @api.model
     def create(self, vals):
-        self.env['inquiry.inquiry'].browse([vals.get('inquiry_id')]).write({'active': False})
-        return super(Order, self).create(vals)
+        self.env['print.inquiry'].browse([vals.get('inquiry_id')]).write({'active': False})
+        return super(PrintOrder, self).create(vals)

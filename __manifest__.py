@@ -13,6 +13,7 @@
         'views/web_templates.xml',
         'views/registration_templates.xml',
         'views/portal_views.xml',
+        'views/res_config_settings_views.xml'
     ],
     'application': True
 }
