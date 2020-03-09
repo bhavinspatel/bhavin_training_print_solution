@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import base64
-from . import checksum
 import json
+from . import checksum
+from datetime import datetime
 from werkzeug import urls
 
 from odoo import http
@@ -10,16 +11,16 @@ from odoo.http import request
 from odoo.addons.web.controllers.main import Home
 
 
-class Home(Home):
+# class Home(Home):
 
-    def _login_redirect(self, uid, redirect=None):
-        if request.session.uid and request.env['res.users'].sudo().browse(request.session.uid).has_group('print_service.group_jobworker'):
-            return '/web/'
-        if request.session.uid and request.env['res.users'].sudo().browse(request.session.uid).has_group('base.group_portal'):
-            if request.env['print.user'].sudo().search([('uid', '=', request.session.uid)], limit=1):
-                return '/home'
-            return '/user/data/form'
-        return super(Home, self)._login_redirect(uid, redirect=redirect)
+#     def _login_redirect(self, uid, redirect=None):
+#         if request.session.uid and request.env['res.users'].sudo().browse(request.session.uid).has_group('print_service.group_jobworker'):
+#             return '/web/'
+#         if request.session.uid and request.env['res.users'].sudo().browse(request.session.uid).has_group('base.group_portal'):
+#             if request.env['print.user'].sudo().search([('uid', '=', request.session.uid)], limit=1):
+#                 return '/home'
+#             return '/user/data/form'
+#         return super(Home, self)._login_redirect(uid, redirect=redirect)
 
 
 class PrintService(http.Controller):
@@ -111,15 +112,19 @@ class PrintService(http.Controller):
 
     @http.route('/paytm_response', type="http", csrf=False)
     def paytm_response(self, **kw):
-        print('\n\n\n\n', kw)
+        print('\n\n\n', kw)
         order_payment = request.env['print.order'].search([('order_reference', '=', kw.get('ORDERID'))], limit=1)
-        if(kw.get('STATUS') == 'TXN_SUCCESS'):
-            order_payment.write({'acquirer_ref': kw.get('TXNID'), 'payment_status': 'success', 'state': 'pending'})
-            return request.render("print_service.portal_payment_success")
-        elif(kw.get('STATUS') == 'TXN_FAILURE'):
-            order_payment.write({'payment_status': 'failed', 'active': False})
-            return request.render("print_service.portal_payment_failed")
-        return http.local_redirect('/order')
+        if checksum.verify_checksum(kw, 'XdanaSDPoWj#!P7s', kw.get('CHECKSUMHASH')):
+            if(kw.get('STATUS') == 'TXN_SUCCESS'):
+                date_string = kw.get('TXNDATE')
+                order_payment.write({'payment_date': datetime.strptime(date_string[:-2], '%Y-%m-%d %H:%M:%S'), 'acquirer_ref': kw.get('TXNID'), 'payment_status': 'success', 'state': 'pending'})
+                return request.render("print_service.portal_payment_message", {'context': kw})
+            elif(kw.get('STATUS') == 'TXN_FAILURE'):
+                order_payment.write({'payment_status': 'failed', 'active': False})
+                return request.render("print_service.portal_payment_message", {'context': kw})
+            return http.local_redirect('/order')
+        else:
+            return http.local_redirect("/order/payment")
 
     @http.route('/order', auth='user', type="http")
     def order_data(self, **kw):

@@ -100,7 +100,7 @@ class PrintOrder(models.Model):
     order_reference = fields.Char(default=_default_order_reference, store=True)
     acquirer_ref = fields.Char(string="Transaction ID")
     payment_date = fields.Datetime(string="Payment Date")
-    payment_status = fields.Selection([('pending', 'Pending'), ('failed', 'Failed'), ('success', 'Success')], string="Payment Date", default='pending')
+    payment_status = fields.Selection([('pending', 'Pending'), ('failed', 'Failed'), ('success', 'Success')], string="Payment Status", default='pending')
     active = fields.Boolean(default=True)
 
     def action_pending(self):

@@ -264,10 +264,7 @@
         <t t-call="portal.portal_layout">
             <div class="container">
                 <h2 class="text-center p-2">Order Payment Form</h2>
-                    <div class="form-group">
-                        <label>Order ID</label>
-                        <input type="text" class="form-control" name="order_id" id="order_id" t-attf-value="{{order.id}}"/>
-                    </div>
+                        <input type="text" class="form-control" name="order_id" id="order_id" t-attf-value="{{order.id}}" hidden=""/>
                     <div class="form-group">
                         <label>Order Name</label>
                         <input type="text" class="form-control" name="order_name" t-attf-value="{{order.inquiry_id.name}}"/>
@@ -284,27 +281,20 @@
         </t>
     </template>
 
-    <template id="portal_payment_success">
+    <template id="portal_payment_message">
         <t t-call="portal.portal_layout">
             <div class="container">
-                <div class="alert alert-success my-3 col-md-10" role="alert">
-                    <h4 class="alert-heading">Awesome!</h4>
-                    <p class="mb-0">Aww yeah, your payment successfully done.</p>
+                <div t-attf-class="alert alert-#{'success' if context['STATUS'] == 'TXN_SUCCESS' else 'danger' } my-3 col-md-10" role="alert">
+                    <t t-if="context['STATUS'] == 'TXN_SUCCESS'">
+                        <h4 class="alert-heading">Awesome!</h4>
+                        <p class="mb-0">Aww yeah, your payment successfully done.</p>
+                    </t>
+                    <t t-else="">
+                        <h4 class="alert-heading">Oops! something went wrong</h4>
+                        <p class="mb-0">Oh no, your payment failed.</p>
+                    </t>
                     <hr/>
                     <a class="mb-0 btn btn-info" href="/order">Ok</a>
-                </div>
-            </div>
-        </t>
-    </template>
-
-    <template id="portal_payment_failed">
-        <t t-call="portal.portal_layout">
-            <div class="container">
-                <div class="alert alert-danger my-3 col-md-10" role="alert">
-                    <h4 class="alert-heading">Oops! something went wrong</h4>
-                    <p class="mb-0">Oh no, your payment failed.</p>
-                    <hr/>
-                    <a class="mb-0 btn btn-warning" href="/order/payment">Ok</a>
                 </div>
             </div>
         </t>

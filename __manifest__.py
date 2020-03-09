@@ -15,5 +15,8 @@
         'views/portal_views.xml',
         'views/res_config_settings_views.xml'
     ],
+    'demo': [
+        # 'demo/demo.xml'
+    ],
     'application': True
 }

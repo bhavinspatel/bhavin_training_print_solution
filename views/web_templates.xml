@@ -158,13 +158,13 @@
 			<field name="model">print.inquiry</field>
 			<field name="arch" type="xml">
 				<tree>
-					<field name="name" />
-					<field name="object_id" />
-					<field name="attachment" />
-					<field name="cust_id" />
-					<field name="provider_id" />
-					<field name="location" />
-					<field name="remark" />
+					<field name="name"/>
+					<field name="object_id"/>
+					<field name="attachment"/>
+					<field name="cust_id"/>
+					<field name="provider_id"/>
+					<field name="location"/>
+					<field name="remark"/>
 				</tree>
 			</field>
 		</record>
@@ -203,12 +203,12 @@
 						<t t-name="kanban-box">
 							<div t-attf-class="oe_kanban_global_click">
 								<div t-attf-class="oe_kanban_content">
-									Inquiry Name : <field name="name" /><br/>
-									Object Name : <field name="object_id" /><br/>
-									attachment : <field name="attachment" /><br/>
-									Provider Name : <field name="provider_id" /><br/>
-									Delivery Location : <field name="location" /><br/>
-									Remark : <field name="remark" />
+									Inquiry Name : <field name="name"/><br/>
+									Object Name : <field name="object_id"/><br/>
+									attachment : <field name="attachment"/><br/>
+									Provider Name : <field name="provider_id"/><br/>
+									Delivery Location : <field name="location"/><br/>
+									Remark : <field name="remark"/>
 								</div>
 							</div>
 						</t>
@@ -228,15 +228,18 @@
 			<field name="model">print.order</field>
 			<field name="arch" type="xml">
 				<tree>
-					<field name="inquiry_id" />
-					<field name="object_id" />
-					<field name="attachment" />
-					<field name="start" />
-					<field name="end" />
-					<field name="amount" />
-					<field name="cust_id" />
-					<field name="location" />
-					<field name="state" />
+					<field name="inquiry_id"/>
+					<field name="object_id"/>
+					<field name="attachment"/>
+					<field name="start"/>
+					<field name="end"/>
+					<field name="amount"/>
+					<field name="cust_id"/>
+					<field name="location"/>
+					<field name="state"/>
+					<field name="payment_date"/>
+					<field name="payment_status"/>
+					<field name="acquirer_ref"/>
 				</tree>
 			</field>
 		</record>
@@ -252,35 +255,35 @@
 						<button name="action_complated" states="progress,dispatched" string="Complated" type="object" class="btn-success"/>
 						<button name="action_dispatched" states="complated,delivered" string="Dipatched" type="object" class="btn-dark"/>
 						<button name="action_delivered" states="dispatched" string="Delivered" type="object" class="btn-success"/>
-						<field name="state" widget="statusbar" statusbar_visible="pending,progress,complated,dispatched,delivered" />
+						<field name="state" widget="statusbar" statusbar_visible="pending,progress,complated,dispatched,delivered"/>
 					</header>
 					<sheet>
 						<group>
 							<group>
-								<field name="inquiry_id" />
+								<field name="inquiry_id"/>
 							</group>
 							<group>
 							</group>
 						</group>
 						<group>
 							<group>
-								<field name="object_id" />
-								<field name="location" />
-								<field name="attachment" />
+								<field name="object_id"/>
+								<field name="location"/>
+								<field name="attachment"/>
 							</group>
 							<group>
-								<field name="cust_id" />
-								<field name="provider_id" />
-								<field name="remark" />
+								<field name="cust_id"/>
+								<field name="provider_id"/>
+								<field name="remark"/>
 							</group>
 						</group>
 						<notebook>
 							<page string="Order">
 							<group>
 								<group>
-									<field name="start" />
-									<field name="end" />
-									<field name="amount" />
+									<field name="start"/>
+									<field name="end"/>
+									<field name="amount"/>
 								</group>
 								<group>
 								</group>
@@ -301,15 +304,18 @@
 						<t t-name="kanban-box">
 							<div t-attf-class="oe_kanban_global_click">
 								<div t-attf-class="oe_kanban_content">
-									Inquiry Name : <field name="inquiry_id" /><br/>
-									Object Name : <field name="object_id" /><br/>
-									Attachment : <field name="attachment" /><br/>
-									Start Printing : <field name="start" /><br/>
-									End Printing : <field name="end" /><br/>
-									Amount : <field name="amount" /><br/>
-									Customer Name : <field name="cust_id" /><br/>
-									Delivery Location : <field name="location" /><br/>
-									Status : <field name="state" />
+									Inquiry Name : <field name="inquiry_id"/><br/>
+									Object Name : <field name="object_id"/><br/>
+									Attachment : <field name="attachment"/><br/>
+									Start Printing : <field name="start"/><br/>
+									End Printing : <field name="end"/><br/>
+									Amount : <field name="amount"/><br/>
+									Customer Name : <field name="cust_id"/><br/>
+									Delivery Location : <field name="location"/><br/>
+									Status : <field name="state"/>
+									Payment Date : <field name="payment_date"/>
+									Payment Status : <field name="payment_status"/>
+									Transaction ID : <field name="acquirer_ref"/>
 								</div>
 							</div>
 						</t>
@@ -323,7 +329,7 @@
 			<field name="model">print.order</field>
 			<field name="arch" type="xml">
 				<graph>
-					<field name="state" />
+					<field name="state"/>
 				</graph>
 			</field>
 		</record>
@@ -333,8 +339,8 @@
 			<field name="model">print.order</field>
 			<field name="arch" type="xml">
 				<pivot>
-					<field name="object_id" type="row" />
-					<field name="state" type="col" />
+					<field name="object_id" type="row"/>
+					<field name="state" type="col"/>
 				</pivot>
 			</field>
 		</record>
@@ -350,8 +356,8 @@
 			<field name="model">print.order</field>
 			<field name="arch" type="xml">
 				<dashboard>
-					<view type="pivot" ref="order_pivot" />
-					<view type="graph" ref="order_graph" />
+					<view type="pivot" ref="order_pivot"/>
+					<view type="graph" ref="order_graph"/>
 				</dashboard>
 			</field>
 		</record>
@@ -362,13 +368,13 @@
 			<field name="view_mode">dashboard,graph,pivot</field>
 		</record>
 
-		<menuitem name="Print Service" id="print_service_rootmenu" web_icon="print_service,static/description/icon1.png" action="web_print_service_dashboard_action"  />
-			<menuitem name="Users" id="print_service_user_menu" parent="print_service_rootmenu" action="web_print_service_user_action" sequence="1" />
-			<menuitem name="Service Provider" id="print_service_provider_menu" parent="print_service_rootmenu" action="web_print_service_provider_action" sequence="2" />
+		<menuitem name="Print Service" id="print_service_rootmenu" web_icon="print_service,static/description/icon1.png" action="web_print_service_dashboard_action"/>
+			<menuitem name="Users" id="print_service_user_menu" parent="print_service_rootmenu" action="web_print_service_user_action" sequence="1"/>
+			<menuitem name="Service Provider" id="print_service_provider_menu" parent="print_service_rootmenu" action="web_print_service_provider_action" sequence="2"/>
 			<menuitem name="Inquiry" id="print_service_inquiry_menu" parent="print_service_rootmenu" action="web_print_service_inquiry_action" sequence="3"/>
 			<menuitem name="Order" id="print_service_order_menu" parent="print_service_rootmenu" action="web_print_service_order_action" sequence="4"/>
-			<menuitem name="Reporting" id="print_service_reporting_menu" parent="print_service_rootmenu" sequence="5" />
-				<menuitem name="Dashboard" id="print_service_submenu_dashboard_menu" parent="print_service_reporting_menu" action="web_print_service_dashboard_action" />
-			<menuitem name="Configuration" id="print_service_configuration_menu" parent="print_service_rootmenu" sequence="6" />
-				<menuitem name="Object" id="print_service_submenu_object_menu" parent="print_service_configuration_menu" action="web_print_service_object_action" />
+			<menuitem name="Reporting" id="print_service_reporting_menu" parent="print_service_rootmenu" sequence="5"/>
+				<menuitem name="Dashboard" id="print_service_submenu_dashboard_menu" parent="print_service_reporting_menu" action="web_print_service_dashboard_action"/>
+			<menuitem name="Configuration" id="print_service_configuration_menu" parent="print_service_rootmenu" sequence="6"/>
+				<menuitem name="Object" id="print_service_submenu_object_menu" parent="print_service_configuration_menu" action="web_print_service_object_action"/>
 </odoo>

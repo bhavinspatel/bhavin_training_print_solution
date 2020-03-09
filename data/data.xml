@@ -172,7 +172,7 @@
 
         <record id="provider2" model="print.service.provider">
             <field name="owner_name">Abhijit Gamit</field>
-            <field name="name">Gamit Printers</field>
+            <field name="name">The Copy and Print Shop</field>
             <field name="shop_image" file="print_service/static/src/demo_file/print_shop3.jpg" type="base64"></field>
             <field name="gst_number">23ABCDE1234F2Z</field>
             <field name="address">At Gandhinagar</field>
@@ -297,6 +297,9 @@
             <field name="end">2020-01-23 11:26:12</field>
             <field name="amount">100</field>
             <field name="state">delivered</field>
+            <field name="acquirer_ref">20200225111212800110168711504856231</field>
+            <field name="payment_date">2020-01-23 11:26:12</field>
+            <field name="payment_status">success</field>
             <field name="company_id" ref="print_service.service_provider_company0"></field>
         </record>
 
@@ -306,6 +309,9 @@
             <field name="end">2020-01-21 16:20:00</field>
             <field name="amount">20</field>
             <field name="state">complated</field>
+            <field name="acquirer_ref">20200226111212800110168711501295241</field>
+            <field name="payment_date">2020-01-20 15:10:50</field>
+            <field name="payment_status">success</field>
             <field name="company_id" ref="print_service.service_provider_company1"></field>
         </record>
 
@@ -314,6 +320,9 @@
             <field name="start">2020-01-23 11:26:12</field>
             <field name="amount">400</field>
             <field name="state">progress</field>
+            <field name="acquirer_ref">20200227111212800110168711501297388</field>
+            <field name="payment_date">2020-01-23 11:20:00</field>
+            <field name="payment_status">success</field>
             <field name="company_id" ref="print_service.service_provider_company2"></field>
         </record>
 
