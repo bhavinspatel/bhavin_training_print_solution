@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
+
 {
     'name': 'Print Service',
     'summary': 'This is a Print service Application',
@@ -16,7 +17,7 @@
         'views/res_config_settings_views.xml'
     ],
     'demo': [
-        # 'demo/demo.xml'
+        'demo/demo.xml'
     ],
     'application': True
 }
